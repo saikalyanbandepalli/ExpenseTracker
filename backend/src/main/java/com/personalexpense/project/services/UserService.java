@@ -31,6 +31,17 @@ public class UserService {
         return userRepository.findById(id);
     }
 
+    public User authenticateUser(String username, String password) {
+
+        User user = userRepository.findByUsername(username);
+        if(user.getUsername() == username && user.getPassword() == password) {
+            return user;
+        }
+
+
+        return null;
+    }
+
 
 }
 

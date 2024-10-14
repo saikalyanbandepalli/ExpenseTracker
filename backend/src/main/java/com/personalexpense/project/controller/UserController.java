@@ -2,6 +2,7 @@ package com.personalexpense.project.controller;
 
 
 import com.personalexpense.project.dto.ExpenseRequest;
+import com.personalexpense.project.dto.LoginRequest;
 import com.personalexpense.project.model.Expense;
 import com.personalexpense.project.model.User;
 import com.personalexpense.project.services.ExpenseService;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -61,6 +64,18 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // Handle user creation failure
         }
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<User> loginUser(@RequestBody LoginRequest loginRequest) {
+         User user = userService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword());
+
+        if (user != null) {
+            return ResponseEntity.ok(user); // Return user details upon successful login
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null); // Return 401 if authentication fails
+        }
+    }
+
 
 
 

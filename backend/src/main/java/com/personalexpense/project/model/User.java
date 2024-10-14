@@ -33,7 +33,7 @@ public class User {
         this.expenses = expenses;
     }
 
-    // Getters and Setters
+
     public Long getId() {
         return id;
     }

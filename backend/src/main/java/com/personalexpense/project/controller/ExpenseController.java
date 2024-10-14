@@ -8,6 +8,7 @@ import com.personalexpense.project.model.User;
 import com.personalexpense.project.services.ExpenseService;
 import com.personalexpense.project.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -25,7 +26,7 @@ public class ExpenseController {
     private UserService userService;
 
     @PostMapping("/add")
-    public Expense addExpense(@RequestBody ExpenseRequest expenseRequest) throws ResourceNotFoundException {
+    public ResponseEntity<Expense> addExpense(@RequestBody ExpenseRequest expenseRequest) throws ResourceNotFoundException {
         Optional<User> user = userService.findById(expenseRequest.getUserId());
 
 
@@ -37,7 +38,7 @@ public class ExpenseController {
                 expenseRequest.getDate(),
                 user
         );
-        return expenseService.addExpense(expense);
+        return ResponseEntity.ok(expenseService.addExpense(expense));
     }
 
     @GetMapping

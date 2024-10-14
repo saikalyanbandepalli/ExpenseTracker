@@ -55,7 +55,7 @@ public class UserController {
 
             System.out.println("Created User: " + createdUser);
 
-            // Return the created user as a response entity
+
             return ResponseEntity.ok(createdUser);
         } else {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // Handle user creation failure

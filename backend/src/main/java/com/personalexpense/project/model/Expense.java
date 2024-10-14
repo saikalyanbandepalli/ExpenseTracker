@@ -1,25 +1,28 @@
 package com.personalexpense.project.model;
 
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Entity
-
 public class Expense {
 
-    public Expense(Long id, String name, double amount, String category, LocalDate date, User user) {
-        this.id = id;
-        this.name = name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+
+    public Expense(Long id, String name, double amount, String category, LocalDate date, Optional<User> user) {
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
         this.amount = amount;
-        this.category = category;
-        this.date = date;
-        this.user = user;
     }
 
     public Long getId() {
@@ -36,14 +39,6 @@ public class Expense {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
     }
 
     public String getCategory() {
@@ -70,22 +65,27 @@ public class Expense {
         this.user = user;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String name;
     private double amount;
     private String category;
     private LocalDate date;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    // Default constructor
     public Expense() {
     }
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    @JsonBackReference
-    private User user;
+    // Parameterized constructor
+    public Expense(Long id, String name, double amount, String category, LocalDate date, User user) {
+        this.id = id;
+        this.name = name;
+        this.amount = amount;
+        this.category = category;
+        this.date = date;
+        this.user = user; // Ensure the user is set here
+    }
 
 
 }

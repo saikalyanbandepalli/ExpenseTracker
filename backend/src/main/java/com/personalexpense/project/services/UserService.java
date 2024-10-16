@@ -6,6 +6,7 @@ import com.personalexpense.project.model.User;
 import com.personalexpense.project.repositories.ExpenseRepository;
 import com.personalexpense.project.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -34,6 +35,9 @@ public class UserService {
     public User authenticateUser(String username, String password) {
 
         User user = userRepository.findByUsername(username);
+        if(user == null) {
+            throw new UsernameNotFoundException("User not found with username: " + username);
+        }
         if(user.getUsername() == username && user.getPassword() == password) {
             return user;
         }

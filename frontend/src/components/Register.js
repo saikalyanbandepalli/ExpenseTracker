@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import axiosInstance from '../hooks/axiosInstance';
+
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -11,13 +13,13 @@ const Register = () => {
         e.preventDefault();
         
         try {
-            const response = await axios.post('/api/users/register', {
+            const response = await axiosInstance.post('/api/users/register', {
                 username,
                 password,
                 email
             });
             setMessage('Registration successful!');
-            // Reset fields or handle success
+            
         } catch (error) {
             setMessage('Registration failed. Please try again.');
             console.error(error);

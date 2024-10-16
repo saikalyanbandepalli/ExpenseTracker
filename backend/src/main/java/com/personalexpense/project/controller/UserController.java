@@ -1,7 +1,6 @@
 package com.personalexpense.project.controller;
 
 
-import com.personalexpense.project.dto.ExpenseRequest;
 import com.personalexpense.project.dto.LoginRequest;
 import com.personalexpense.project.model.Expense;
 import com.personalexpense.project.model.User;
@@ -10,9 +9,12 @@ import com.personalexpense.project.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -22,6 +24,9 @@ public class UserController {
     private UserService userService;
     @Autowired
     private ExpenseService expenseService;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
 
     @PostMapping("/register")
@@ -66,18 +71,25 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<User> loginUser(@RequestBody LoginRequest loginRequest) {
-         User user = userService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword());
-
-        if (user != null) {
-            return ResponseEntity.ok(user); // Return user details upon successful login
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null); // Return 401 if authentication fails
+    public ResponseEntity<String> loginUser(@RequestBody LoginRequest loginRequest) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            return ResponseEntity.ok("User already logged in");
         }
+
+        try {
+            Authentication auth = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
+            );
+            SecurityContextHolder.getContext().setAuthentication(auth);
+            return ResponseEntity.ok("User logged in successfully");
+        } catch (BadCredentialsException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+        }
+    }
     }
 
 
 
 
 
-}

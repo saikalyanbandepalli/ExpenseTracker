@@ -1,6 +1,7 @@
 import React from 'react'; 
 import { useContext } from 'react';
 import ExpenseItem from './ExpenseItem';
+import './ExpenseForm.css'
 import ExpenseContext from '../context/ExpenseContext';
 
 const ExpenseList = () => {

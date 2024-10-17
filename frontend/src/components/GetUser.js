@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import axiosInstance from '../hooks/axiosInstance';
+import './GetUser.css'
 
 const GetUser = () => {
     const [username, setUsername] = useState('');

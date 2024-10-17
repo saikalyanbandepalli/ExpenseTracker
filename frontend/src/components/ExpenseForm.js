@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import ExpenseContext from '../context/ExpenseContext';
+import './ExpenseForm.css';
 
 const ExpenseForm = () => {
   const { setExpenses } = useContext(ExpenseContext);

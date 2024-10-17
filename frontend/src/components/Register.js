@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import axiosInstance from '../hooks/axiosInstance';
+import './Register.css'
 
 
 const Register = () => {

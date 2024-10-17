@@ -2,9 +2,12 @@ package com.personalexpense.project.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
+import java.util.Collection;
 import java.util.Set;
 
+@Component
 @Entity
 public class User {
 
@@ -16,23 +19,32 @@ public class User {
     private String password;
     private String email;
 
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Expense> expenses;
+
+    @ManyToMany(fetch = FetchType.EAGER) // Eager fetch to load roles with user
+    @JoinTable(
+            name = "user_roles", // Join table name
+            joinColumns = @JoinColumn(name = "user_id"), // Foreign key for User
+            inverseJoinColumns = @JoinColumn(name = "role_id") // Foreign key for Role
+    )
+    private Set<Role> roles; // User roles
 
     // Default constructor
     public User() {}
 
     // Parameterized constructor
-    public User(Long id, String username, String password, String email, Set<Expense> expenses) {
+    public User(Long id, String username, String password, String email, Set<Expense> expenses, Set<Role> roles) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.expenses = expenses;
+        this.roles = roles;
     }
 
+    // Getters and Setters...
 
     public Long getId() {
         return id;
@@ -74,5 +86,11 @@ public class User {
         this.expenses = expenses;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
 
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 }

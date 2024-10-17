@@ -1,9 +1,14 @@
 package com.personalexpense.project.controller;
 
 
+import com.personalexpense.project.Jwt.JwtUtil;
+import com.personalexpense.project.config.SecurityConfig;
 import com.personalexpense.project.dto.LoginRequest;
+import com.personalexpense.project.dto.LoginResponse;
 import com.personalexpense.project.model.Expense;
+import com.personalexpense.project.model.Role;
 import com.personalexpense.project.model.User;
+import com.personalexpense.project.repositories.RoleRepository;
 import com.personalexpense.project.services.ExpenseService;
 import com.personalexpense.project.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +19,12 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/users")
@@ -28,11 +38,31 @@ public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private JwtUtil jwtUtil;
+
+    @Autowired
+    RoleRepository roleRepository;
+
+    @Autowired
+    User user;
+
+    @Autowired
+    SecurityConfig securityConfig;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
 
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
         System.out.println("Creating User: " + user);
-
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        System.out.println(user.getPassword());
+        Role defaultRole = roleRepository.findByName("ROLE_USER");
+        if (defaultRole != null) {
+            user.setRoles(Set.of(defaultRole));
+        }
         // Register the user first
         User createdUser = userService.registerUser(user);
 
@@ -71,23 +101,51 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> loginUser(@RequestBody LoginRequest loginRequest) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated()) {
-            return ResponseEntity.ok("User already logged in");
-        }
-
+    public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
         try {
+            System.out.println(loginRequest.getUsername());
+            if (loginRequest.getUsername() == null) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new LoginResponse("User not found"));
+            }
+            // Authenticate the user using the provided username and password
             Authentication auth = authenticationManager.authenticate(
+
                     new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
             );
+
+            UserDetails userDetails = userService.loadUserByUsername(loginRequest.getUsername());
+
+            // Generate JWT
+            String jwt = jwtUtil.generateToken(userDetails);
+
+            // Set the authentication in the context
             SecurityContextHolder.getContext().setAuthentication(auth);
-            return ResponseEntity.ok("User logged in successfully");
+            //System.out.println(auth);
+
+            // Load user details to generate the JWT
+
+            System.out.println("Loading" + jwt);
+            // Return the JWT in the response
+            return ResponseEntity.ok(new LoginResponse(jwt));
+
         } catch (BadCredentialsException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+            // Return error response with a message
+            String errorMessage = "Invalid credentials";
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new LoginResponse(errorMessage));
+        } catch (Exception e) {
+            // Handle other exceptions (e.g., user not found)
+            e.printStackTrace();
+            String errorMessage = "An error occurred during authentication";
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new LoginResponse(errorMessage));
         }
     }
-    }
+
+
+
+
+}
+
+
 
 
 

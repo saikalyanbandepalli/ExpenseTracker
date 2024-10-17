@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import axiosInstance from '../hooks/axiosInstance';
 
 const GetUser = () => {
     const [username, setUsername] = useState('');
@@ -8,7 +9,7 @@ const GetUser = () => {
 
     const fetchUserByUsername = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/users/${username}`);
+            const response = await axiosInstance.get(`api/users/${username}`);
             setUserData(response.data);
             setErrorMessage('');
         } catch (error) {

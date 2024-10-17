@@ -21,6 +21,7 @@ function App() {
                     <Route path="/add-expense" element={<AddExpense />} />
                     <Route path="/get-user" element={<GetUser />} /> {/* New route */}
                     <Route path="/register" element={<Register />} /> {/* New route */}
+                    <Route path="/getuser" element={<GetUser/>}/>
                     {/* Add other routes as needed */}
                 </Routes>
             </Router>

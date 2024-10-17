@@ -140,8 +140,16 @@ public class UserController {
         }
     }
 
+    @GetMapping("/{username}")
+    public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
+        User user = userService.findByUsername(username); // Assuming this returns User or null
 
-
+        if (user != null) {
+            return ResponseEntity.ok(user); // Return 200 OK with the user if found
+        } else {
+            return ResponseEntity.notFound().build(); // Return 404 NOT FOUND if not found
+        }
+    }
 
 }
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import axiosInstance from '../hooks/axiosInstance';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -14,8 +15,10 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('/login', { username, password });
+            const response = await axiosInstance.post('api/users/login', { username, password });
             if (response.status === 200) {
+                const { token } = response.data; // Assuming your API response contains the JWT token
+                localStorage.setItem('token', token); // St
                 login(); // Set authenticated state
                 navigate('/'); // Redirect to home after login
             }

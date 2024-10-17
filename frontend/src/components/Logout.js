@@ -8,6 +8,7 @@ const Logout = () => {
 
     React.useEffect(() => {
         logout(); // Clear authentication state
+        localStorage.removeItem('token'); 
         navigate('/login'); // Redirect to login
     }, [logout, navigate]);
 

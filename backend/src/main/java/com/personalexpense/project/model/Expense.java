@@ -1,11 +1,13 @@
 package com.personalexpense.project.model;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.Optional;
 
 @Entity
+@Component
 public class Expense {
 
     @Id
@@ -14,7 +16,16 @@ public class Expense {
 
     private String name;
 
-    public Expense(Long id, String name, double amount, String category, LocalDate date, Optional<User> user) {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Expense() {
+
     }
 
     public double getAmount() {
@@ -25,13 +36,9 @@ public class Expense {
         this.amount = amount;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+
+
 
     public String getName() {
         return name;
@@ -74,12 +81,10 @@ public class Expense {
     private User user;
 
     // Default constructor
-    public Expense() {
-    }
 
     // Parameterized constructor
-    public Expense(Long id, String name, double amount, String category, LocalDate date, User user) {
-        this.id = id;
+    public Expense( String name, double amount, String category, LocalDate date, User user) {
+       // this.id = id;
         this.name = name;
         this.amount = amount;
         this.category = category;

@@ -1,6 +1,5 @@
 package com.personalexpense.project.Jwt;
 
-import com.personalexpense.project.model.User;
 import com.personalexpense.project.services.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -38,16 +37,18 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         logger.debug("Incoming request URI: {}", request.getRequestURI());
         logger.debug("Authorization header: {}", authorizationHeader);
 
+
         String username = null;
         String jwt = null;
 
         // Bypass JWT validation for the login and registration endpoints
         String requestURI = request.getRequestURI();
-        if (requestURI.equals("/api/users/login") || requestURI.equals("/api/users/register") || requestURI.equals("/error")) {
+        if (requestURI.equals("/api/users/login") || requestURI.equals("/api/users/register") || requestURI.equals("/error") || requestURI.equals("/api/roles/getroles")) {
             logger.debug("Bypassing security for URI: " + requestURI);
             chain.doFilter(request, response); // Proceed with the request
             return;
         }
+
         // Check for JWT in the Authorization header (e.g., "Bearer <token>")
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             jwt = authorizationHeader.substring(7);
@@ -68,16 +69,24 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Missing or invalid Authorization header");
             return; // Stop further processing
         }
+
         logger.debug("JWT Token: " + jwt);
         logger.debug("Username from token: " + username);
+
         // If the token is valid, set the security context with user details
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            User userDetails = userService.findByUsername(username);  // Fetch user details
 
+            UserDetails userDetails = userService.loadUserByUsername(username);  // Fetch UserDetails
+            logger.debug("User roles: {}", userDetails.getAuthorities());
             if (userDetails != null && jwtUtil.validateToken(jwt, userDetails)) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                        userDetails, null, null  // No authorities since you don’t have roles
+                        userDetails, null, userDetails.getAuthorities()  // Pass authorities directly
                 );
+//                if (authentication != null) {
+//                    System.out.println("Authenticated user: " + authentication.getName());
+//                    System.out.println("User authorities: " + authentication.getAuthorities());
+//                }
+
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             } else {
@@ -85,6 +94,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 return;
             }
         }
+
+
 
         chain.doFilter(request, response); // Proceed with the request
     }

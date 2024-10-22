@@ -1,11 +1,12 @@
 import React from 'react'; 
 import ExpenseList from '../components/ExpenseList';
+import Login from '../components/Login';
+import Register from '../components/Register';
 
 const Dashboard = () => (
   <div>
-    <h1>Dashboard</h1>
     
-    <ExpenseList />
+   <Login/>
   </div>
 );
 

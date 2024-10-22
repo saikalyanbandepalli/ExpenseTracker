@@ -6,8 +6,9 @@ import ExpenseContext from '../context/ExpenseContext';
 
 const ExpenseList = () => {
   const { expenses } = useContext(ExpenseContext);
-
+  console.log(expenses);
   return (
+    
     <ul>
       {expenses.map(expense => (
         <ExpenseItem key={expense.id} expense={expense} />

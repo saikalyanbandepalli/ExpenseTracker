@@ -1,7 +1,6 @@
 package com.personalexpense.project.config;
 
 import com.personalexpense.project.Jwt.JwtRequestFilter;
-//import com.personalexpense.project.services.UserService;
 import com.personalexpense.project.services.UserService;
 import jakarta.servlet.DispatcherType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +13,10 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @Configuration
 @EnableWebSecurity
@@ -51,12 +46,6 @@ public class SecurityConfig {
         auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
     }
 
- //   @Bean
-   // public AuthenticationManager authenticationManagerBean() throws Exception {
-     //   return super.authenticationManagerBean();
-    //}
-
-
     // Security filter chain configuration
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -65,12 +54,14 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(webConfig.corsConfigurationSource())) // Enable CORS if needed
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/api/users/login", "/api/users/register", "/error").permitAll()
+                        .requestMatchers("/api/users/login", "/api/users/register", "/error", "/api/roles/getroles").permitAll() // Public access
+                        // Add role-based access control here
+                        .requestMatchers(HttpMethod.GET, "/api/expenses/**","/error").hasAnyAuthority("user", "admin") // Only users with USER or ADMIN role can access GET expenses
+                        .requestMatchers(HttpMethod.POST, "/api/expenses/**","/error").hasAnyAuthority("admin","user") // Only ADMIN can create expenses
+                        .anyRequest().authenticated() // All other requests require authentication
                 )
-                // Add your filter before the default UsernamePasswordAuthenticationFilter
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)); // Use stateless sessions
 
         return http.build();
     }
-
 }

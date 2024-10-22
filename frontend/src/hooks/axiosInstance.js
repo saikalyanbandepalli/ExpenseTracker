@@ -6,17 +6,19 @@ const axiosInstance = axios.create({
 });
 
 // Adding a request interceptor to include the JWT in headers
+
 axiosInstance.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem('token'); // Assuming you store the token in localStorage
+        const token = localStorage.getItem('token');
+        console.log("Token being attached:", token); // Log token
         if (token) {
-            config.headers.Authorization = `Bearer ${token}`; // Set the JWT in the Authorization header
+            config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
     },
     (error) => {
+        console.error("Error in request interceptor:", error);
         return Promise.reject(error);
     }
 );
-
 export default axiosInstance;

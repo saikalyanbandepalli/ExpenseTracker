@@ -30,4 +30,10 @@ public class ExpenseService {
     public void deleteExpense(Long id) {
         expenseRepository.deleteById(id);
     }
+
+    public List<Expense> getAllExpenses() {
+       return expenseRepository.findAll();
+    }
+
+
 }

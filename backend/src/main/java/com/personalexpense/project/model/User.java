@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 @Component
@@ -22,21 +23,20 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Expense> expenses;
-
-    @ManyToMany(fetch = FetchType.EAGER) // Eager fetch to load roles with user
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "user_roles", // Join table name
-            joinColumns = @JoinColumn(name = "user_id"), // Foreign key for User
-            inverseJoinColumns = @JoinColumn(name = "role_id") // Foreign key for Role
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private Set<Role> roles; // User roles
+    private Set<Role> roles= new HashSet<>(); // User roles
 
     // Default constructor
     public User() {}
 
     // Parameterized constructor
-    public User(Long id, String username, String password, String email, Set<Expense> expenses, Set<Role> roles) {
-        this.id = id;
+    public User(String username, String password, String email, Set<Expense> expenses, Set<Role> roles) {
+       // this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -46,13 +46,6 @@ public class User {
 
     // Getters and Setters...
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
@@ -92,5 +85,15 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", roles=" + roles + // This will call toString on Role if it has one
+                ", expenses=" + expenses + // This will call toString on Expense if it has one
+                '}';
     }
 }

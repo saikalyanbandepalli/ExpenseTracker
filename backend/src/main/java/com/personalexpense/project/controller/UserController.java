@@ -1,8 +1,6 @@
 package com.personalexpense.project.controller;
 
-
 import com.personalexpense.project.Jwt.JwtUtil;
-import com.personalexpense.project.config.SecurityConfig;
 import com.personalexpense.project.dto.LoginRequest;
 import com.personalexpense.project.dto.LoginResponse;
 import com.personalexpense.project.model.Expense;
@@ -16,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,8 +22,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/users")
@@ -32,6 +34,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
     @Autowired
     private ExpenseService expenseService;
 
@@ -42,63 +45,67 @@ public class UserController {
     private JwtUtil jwtUtil;
 
     @Autowired
-    RoleRepository roleRepository;
+    private RoleRepository roleRepository;
 
     @Autowired
-    User user;
-
-    @Autowired
-    SecurityConfig securityConfig;
-
-    @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
 
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
-        System.out.println("Creating User: " + user);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        System.out.println(user.getPassword());
-        Role defaultRole = roleRepository.findByName("ROLE_USER");
-        if (defaultRole != null) {
-            user.setRoles(Set.of(defaultRole));
+        // Log received user data
+        System.out.println("Received user data: " + user);
+        System.out.println("Roles: " + user.getRoles());
+
+        // Validate user details
+        if (user == null || user.getUsername() == null || user.getPassword() == null ||
+                user.getRoles() == null || user.getRoles().isEmpty()) {
+            return ResponseEntity.badRequest().body(null); // Return 400 if validation fails
         }
-        // Register the user first
+
+        // Extract role names directly from the incoming User object
+        List<String> roleNames = user.getRoles().stream()
+                .map(Role::getName) // Extracting role names from the objects
+                .collect(Collectors.toList());
+
+        // Log the extracted role names for debugging
+        System.out.println("Extracted role names: " + roleNames);
+
+        // Fetch role entities from the database based on the extracted names
+        List<Role> roleEntities = roleRepository.findByNameIn(roleNames);
+
+        // If no valid roles are found in the database, return a 400 BAD REQUEST
+        if (roleEntities.isEmpty()) {
+            System.out.println("No valid roles found for names: " + roleNames);
+            return ResponseEntity.badRequest().body(null); // Return 400 if no valid roles
+        }
+
+        // Log the fetched role entities
+        System.out.println("Fetched role entities: " + roleEntities);
+
+        // Set the roles in the user object as fetched Role entities
+        user.setRoles(new HashSet<>(roleEntities));
+
+        // Encode the password before saving
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        // Save the user via the userService
         User createdUser = userService.registerUser(user);
 
-        // Ensure the created user is not null before proceeding
+        // Check if user creation was successful
         if (createdUser != null) {
-            // Check if the user has expenses and associate them with the created user
-            if (user.getExpenses() != null && !user.getExpenses().isEmpty()) {
-                for (Expense expenseRequest : user.getExpenses()) {
-                    // Create a new Expense entity from the DTO
-                    Expense expense = new Expense();
-                    expense.setName(expenseRequest.getName());
-                    expense.setAmount(expenseRequest.getAmount());
-                    expense.setCategory(expenseRequest.getCategory());
-                    expense.setDate(expenseRequest.getDate());
+            // Handle any additional logic, such as managing expenses, if needed
+            // ...
 
-                    // Associate with the created user
-                    expense.setUser(createdUser);
-
-                    // Log the expense before saving
-                    System.out.println("Expense to be saved: " + expense + " with user: " + createdUser.getUsername());
-
-                    // Save the expense
-                    expenseService.addExpense(expense);
-                }
-            } else {
-                System.out.println("No expenses to save for user: " + createdUser.getUsername());
-            }
-
-            System.out.println("Created User: " + createdUser);
-
-
-            return ResponseEntity.ok(createdUser);
+            return ResponseEntity.status(HttpStatus.CREATED).body(createdUser); // Return 201 Created with the user
         } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // Handle user creation failure
+            // Log if there was an error creating the user
+            System.out.println("User creation failed.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // Return 500 if saving the user failed
         }
     }
+
+
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
@@ -109,7 +116,6 @@ public class UserController {
             }
             // Authenticate the user using the provided username and password
             Authentication auth = authenticationManager.authenticate(
-
                     new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
             );
 
@@ -120,15 +126,19 @@ public class UserController {
 
             // Set the authentication in the context
             SecurityContextHolder.getContext().setAuthentication(auth);
-            //System.out.println(auth);
 
-            // Load user details to generate the JWT
-
-            System.out.println("Loading" + jwt);
             // Return the JWT in the response
             return ResponseEntity.ok(new LoginResponse(jwt));
 
-        } catch (BadCredentialsException e) {
+        }
+        catch (InternalAuthenticationServiceException e) {
+            // Log the exception and return a custom message
+            System.out.println("Authentication failed: " + e.getMessage());
+            String errorMessage = "Authentication error: Multiple users found with the same credentials. Please contact support.";
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new LoginResponse(errorMessage));
+
+        }
+        catch (BadCredentialsException e) {
             // Return error response with a message
             String errorMessage = "Invalid credentials";
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new LoginResponse(errorMessage));
@@ -150,12 +160,4 @@ public class UserController {
             return ResponseEntity.notFound().build(); // Return 404 NOT FOUND if not found
         }
     }
-
 }
-
-
-
-
-
-
-

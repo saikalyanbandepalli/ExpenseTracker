@@ -19,10 +19,13 @@ const Login = () => {
             const response = await axiosInstance.post('api/users/login', { username, password });
             if (response.status === 200) {
                 const { token } = response.data; // Assuming your API response contains the JWT token
-                localStorage.setItem('token', token); // St
-                login(); // Set authenticated state
-                navigate('/'); // Redirect to home after login
+                localStorage.setItem('token', token); 
+                setUsername(username)// St
+                login(username); // Set authenticated state
+                navigate('/add-expense');
+                console.log(username); // Redirect to home after login
             }
+
         } catch (err) {
             setError('Invalid username or password');
         }

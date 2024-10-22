@@ -1,11 +1,11 @@
 import React from 'react'; 
 import ExpenseList from '../components/ExpenseList';
 
-const Dashboard = () => (
+const InnerDashboard = () => (
   <div>
-    <h1>Dashboard</h1>
+    <h1>InnerDashboard</h1>
     <ExpenseList />
   </div>
 );
 
-export default Dashboard;
+export default InnerDashboard;

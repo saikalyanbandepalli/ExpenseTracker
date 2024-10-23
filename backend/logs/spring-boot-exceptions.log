@@ -1,0 +1,84 @@
+2024-10-23 15:35:14 - Starting ProjectApplication using Java 22.0.2 with PID 14548 (C:\Users\Bande\Desktop\Expensetracker\backend\target\classes started by Bande in C:\Users\Bande\Desktop\Expensetracker\backend)
+2024-10-23 15:35:14 - Running with Spring Boot v3.3.4, Spring v6.1.13
+2024-10-23 15:35:14 - No active profile set, falling back to 1 default profile: "default"
+2024-10-23 15:35:14 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-23 15:35:14 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-23 15:35:16 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-23 15:35:16 - Finished Spring Data repository scanning in 71 ms. Found 3 JPA repository interfaces.
+2024-10-23 15:35:17 - Tomcat initialized with port 8080 (http)
+2024-10-23 15:35:17 - Starting service [Tomcat]
+2024-10-23 15:35:17 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-23 15:35:17 - Initializing Spring embedded WebApplicationContext
+2024-10-23 15:35:17 - Root WebApplicationContext: initialization completed in 2690 ms
+2024-10-23 15:35:17 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-23 15:35:17 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-23 15:35:17 - HHH000026: Second-level cache disabled
+2024-10-23 15:35:18 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-23 15:35:18 - HikariPool-1 - Starting...
+2024-10-23 15:35:18 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@24531c3d
+2024-10-23 15:35:18 - HikariPool-1 - Start completed.
+2024-10-23 15:35:18 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-23 15:35:18 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-10-23 15:35:20 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-23 15:35:20 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-23 15:35:20 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-10-23 15:35:21 - Filter 'jwtRequestFilter' configured for use
+2024-10-23 15:35:21 - Global AuthenticationManager configured with UserDetailsService bean with name userService
+2024-10-23 15:35:21 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-23 15:35:22 - 16 mappings in 'requestMappingHandlerMapping'
+2024-10-23 15:35:22 - Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-10-23 15:35:22 - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-10-23 15:35:22 - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-23 15:35:22 - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-23 15:35:22 - LiveReload server is running on port 35729
+2024-10-23 15:35:22 - Tomcat started on port 8080 (http) with context path '/'
+2024-10-23 15:35:22 - Started ProjectApplication in 9.198 seconds (process running for 10.046)
+2024-10-23 15:35:31 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-23 15:35:31 - Initializing Servlet 'dispatcherServlet'
+2024-10-23 15:35:31 - Detected StandardServletMultipartResolver
+2024-10-23 15:35:31 - Detected AcceptHeaderLocaleResolver
+2024-10-23 15:35:31 - Detected FixedThemeResolver
+2024-10-23 15:35:31 - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1d83920e
+2024-10-23 15:35:31 - Detected org.springframework.web.servlet.support.SessionFlashMapManager@67772f86
+2024-10-23 15:35:31 - enableLoggingRequestDetails='true': request parameters and headers will be shown which may lead to unsafe logging of potentially sensitive data
+2024-10-23 15:35:31 - Completed initialization in 6 ms
+2024-10-23 15:35:31 - Securing OPTIONS /api/users/login
+2024-10-23 15:35:31 - Securing POST /api/users/login
+2024-10-23 15:35:31 - Incoming request URI: /api/users/login
+2024-10-23 15:35:31 - Authorization header: null
+2024-10-23 15:35:31 - Bypassing security for URI: /api/users/login
+2024-10-23 15:35:31 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-23 15:35:31 - Secured POST /api/users/login
+2024-10-23 15:35:31 - POST "/api/users/login", parameters={}
+2024-10-23 15:35:31 - Mapped to com.personalexpense.project.controller.UserController#loginUser(LoginRequest)
+2024-10-23 15:35:32 - Read "application/json;charset=UTF-8" to [com.personalexpense.project.dto.LoginRequest@1524f31e]
+2024-10-23 15:35:32 - Securing POST /api/users/login
+2024-10-23 15:35:32 - Incoming request URI: /api/users/login
+2024-10-23 15:35:32 - Authorization header: null
+2024-10-23 15:35:32 - Bypassing security for URI: /api/users/login
+2024-10-23 15:35:32 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-23 15:35:32 - Secured POST /api/users/login
+2024-10-23 15:35:32 - POST "/api/users/login", parameters={}
+2024-10-23 15:35:32 - Mapped to com.personalexpense.project.controller.UserController#loginUser(LoginRequest)
+2024-10-23 15:35:32 - Read "application/json;charset=UTF-8" to [com.personalexpense.project.dto.LoginRequest@3786812d]
+2024-10-23 15:35:32 - Failed to find user 'f'
+2024-10-23 15:35:32 - Failed to find user 'f'
+2024-10-23 15:35:32 - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-10-23 15:35:32 - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-10-23 15:35:32 - Writing [com.personalexpense.project.dto.LoginResponse@427e7e5]
+2024-10-23 15:35:32 - Writing [com.personalexpense.project.dto.LoginResponse@680f46cf]
+2024-10-23 15:35:32 - Completed 401 UNAUTHORIZED
+2024-10-23 15:35:32 - Completed 401 UNAUTHORIZED
+2024-10-23 15:35:33 - Securing POST /api/users/login
+2024-10-23 15:35:33 - Incoming request URI: /api/users/login
+2024-10-23 15:35:33 - Authorization header: null
+2024-10-23 15:35:33 - Bypassing security for URI: /api/users/login
+2024-10-23 15:35:33 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-23 15:35:33 - Secured POST /api/users/login
+2024-10-23 15:35:33 - POST "/api/users/login", parameters={}
+2024-10-23 15:35:33 - Mapped to com.personalexpense.project.controller.UserController#loginUser(LoginRequest)
+2024-10-23 15:35:33 - Read "application/json;charset=UTF-8" to [com.personalexpense.project.dto.LoginRequest@6f51ae69]
+2024-10-23 15:35:33 - Failed to find user 'f'
+2024-10-23 15:35:33 - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-10-23 15:35:33 - Writing [com.personalexpense.project.dto.LoginResponse@4084a887]
+2024-10-23 15:35:33 - Completed 401 UNAUTHORIZED

@@ -19,19 +19,20 @@ export const ExpenseProvider = ({ children }) => {
       }
 
       try {
-        console.log("this is from expense context"+loggedUser)
-        // Include the username as a request parameter
+        console.log("this is from expense context " + loggedUser);
         const response = await axiosInstance.get('/api/expenses/allexpenses', {
-          params: { loggedUser } // Pass username as a query parameter
+          params: { loggedUser },
         });
+        console.log("Fetched data: ", response.data); // Log this to see the actual data
         setExpenses(response.data);
-        console.log("Fetched expenses:", response.data);
+        console.log("Expenses state set");
       } catch (error) {
         setError('Failed to load expenses.');
         console.error('Error fetching expenses:', error);
       } finally {
         setLoading(false);
       }
+      
     };
 
     fetchExpenses();

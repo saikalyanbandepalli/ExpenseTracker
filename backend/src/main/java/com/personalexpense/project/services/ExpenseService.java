@@ -23,8 +23,8 @@ public class ExpenseService {
         return expenseRepository.save(expense);
     }
 
-    public List<Expense> getExpensesByUser(String gmail) {
-        return expenseRepository.findByUserEmail(gmail);
+    public List<Expense> getExpensesByUser(String username) {
+        return expenseRepository.findByUserUsername(username);
     }
 
     public void deleteExpense(Long id) {

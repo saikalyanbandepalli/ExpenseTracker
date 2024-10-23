@@ -6,7 +6,7 @@ import ExpenseContext from '../context/ExpenseContext';
 
 const ExpenseList = () => {
   const { expenses } = useContext(ExpenseContext);
-  console.log(expenses);
+  console.log("this is from expesnes list "+ expenses);
   return (
     
     <ul>

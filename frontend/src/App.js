@@ -19,13 +19,25 @@ import ServerError from './components/ServerError'; // Import your custom Server
 import { Provider } from 'react-redux'; // Redux Provider
 import { PersistGate } from 'redux-persist/integration/react'; // PersistGate for Redux persist
 import store, { persistor } from './components/store'; 
+import { useEffect } from 'react';
 <link
   rel="stylesheet"
   href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 />
 
 function App() {
+    useEffect(() => {
+        const link = document.createElement('link');
+        link.href = "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap";
+        link.rel = "stylesheet";
+        document.head.appendChild(link);
+
+        return () => {
+            document.head.removeChild(link); // Clean up when the component unmounts
+        };
+    }, []);
     return (
+        
         <Provider store={store}>
         <AuthProvider>
             <ExpenseProvider>

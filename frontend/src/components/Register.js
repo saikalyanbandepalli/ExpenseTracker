@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axiosInstance from '../hooks/axiosInstance';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const [roles, setRoles] = useState([]); // Initialize roles as an empty array
@@ -8,13 +9,12 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchRoles = async () => {
             try {
                 const response = await axiosInstance.get('/api/roles/getroles'); // Adjust the endpoint as needed
-               // console.log(response.data);
-               console.log("Roles before sending:", selectedRoles.map(role => ({ name: role })));
                 setRoles(response.data);
             } catch (error) {
                 console.error('Error fetching roles:', error);
@@ -29,11 +29,11 @@ const Register = () => {
             const newSelected = prevSelected.includes(role)
                 ? prevSelected.filter((r) => r !== role)
                 : [...prevSelected, role];
-    
-            console.log("Updated Selected Roles:", newSelected); // Ensure this shows the correct role selection
+
             return newSelected;
         });
     };
+
     const handleRegister = async (e) => {
         e.preventDefault();
 
@@ -44,11 +44,10 @@ const Register = () => {
             roles: selectedRoles.map(role => ({ name: role })), // Convert selected roles to an array of objects
         };
 
-        console.log("Payload being sent:", JSON.stringify(payload, null, 2)); // Log the payload
-
         try {
             const response = await axiosInstance.post('/api/users/register', payload);
             setMessage('Registration successful!');
+            navigate('/login');
         } catch (error) {
             console.error('Registration error:', error.response ? error.response.data : error);
             setMessage('Registration failed. Please try again.');
@@ -56,38 +55,41 @@ const Register = () => {
     };
 
     return (
-        <div>
-            <h2>Register</h2>
-            <form onSubmit={handleRegister}>
-                <div>
-                    <label>Username:</label>
+        <div className="container mt-5">
+            <h2 className="text-center">Register</h2>
+            <form onSubmit={handleRegister} className="bg-light p-4 rounded shadow">
+                <div className="mb-3">
+                    <label className="form-label">Username:</label>
                     <input
                         type="text"
+                        className="form-control"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
                     />
                 </div>
-                <div>
-                    <label>Password:</label>
+                <div className="mb-3">
+                    <label className="form-label">Password:</label>
                     <input
                         type="password"
+                        className="form-control"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
                 </div>
-                <div>
-                    <label>Email:</label>
+                <div className="mb-3">
+                    <label className="form-label">Email:</label>
                     <input
                         type="email"
+                        className="form-control"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                 </div>
-                <div>
-                    <label>Roles:</label>
+                <div className="mb-3">
+                    <label className="form-label">Roles:</label>
                     {Array.isArray(roles) && roles.length > 0 ? (
                         roles.map((role) => (
                             <div key={role.id}>
@@ -98,16 +100,16 @@ const Register = () => {
                                     checked={selectedRoles.includes(role.name)} // Check if this role is selected
                                     onChange={() => handleRoleChange(role.name)} // Handle role selection
                                 />
-                                <label htmlFor={role.name}>{role.name}</label>
+                                <label htmlFor={role.name} className="ms-2">{role.name}</label>
                             </div>
                         ))
                     ) : (
                         <p>No roles available.</p>
                     )}
                 </div>
-                <button type="submit">Register</button>
+                <button type="submit" className="btn btn-primary w-100">Register</button>
             </form>
-            {message && <p>{message}</p>}
+            {message && <p className="text-success text-center mt-3">{message}</p>}
         </div>
     );
 };

@@ -2,13 +2,13 @@ package com.personalexpense.project.services;
 
 
 import com.personalexpense.project.model.Expense;
-import com.personalexpense.project.model.User;
 import com.personalexpense.project.repositories.ExpenseRepository;
 import com.personalexpense.project.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ExpenseService {
@@ -36,4 +36,7 @@ public class ExpenseService {
     }
 
 
+    public Optional<Expense> getExpensesById(Long expenseId) {
+        return expenseRepository.findById(expenseId);
+    }
 }

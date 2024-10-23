@@ -3,8 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../hooks/axiosInstance';
-import './Login.css'
-
+import './Login.css';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -20,13 +19,11 @@ const Login = () => {
             const response = await axiosInstance.post('api/users/login', { username, password });
             if (response.status === 200) {
                 const { token } = response.data; // Assuming your API response contains the JWT token
-                localStorage.setItem('token', token); 
-                setUsername(username)// St
+                localStorage.setItem('token', token);
                 login(username); // Set authenticated state
                 navigate('/add-expense');
                 console.log(username); // Redirect to home after login
             }
-
         } catch (err) {
             setError('Invalid username or password');
         }
@@ -34,31 +31,33 @@ const Login = () => {
 
     return (
         <div className="login-container">
-            <h1>Login</h1>
+            <h1 className="text-center">Login</h1>
             <form onSubmit={handleLogin}>
-                <div>
-                    <label htmlFor="username">Username:</label>
+                <div className="mb-3">
+                    <label htmlFor="username" className="form-label">Username:</label>
                     <input
                         type="text"
                         id="username"
+                        className="form-control"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
                     />
                 </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
+                <div className="mb-3">
+                    <label htmlFor="password" className="form-label">Password:</label>
                     <input
                         type="password"
                         id="password"
+                        className="form-control"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit" className="btn btn-success w-100">Login</button>
             </form>
-            {error && <p className="error">{error}</p>}
+            {error && <p className="text-danger text-center mt-2">{error}</p>}
         </div>
     );
 };

@@ -9,8 +9,12 @@ export const expenseSlice = createSlice({
     setExpenses: (state, action) => {
       state.expenses = action.payload;
     },
+    clearExpenses: (state) => {
+      state.expenses = []; // Clear expenses on logout
+    },
   },
 });
 
-export const { setExpenses } = expenseSlice.actions;
+// Export the actions
+export const { setExpenses, clearExpenses } = expenseSlice.actions;
 export default expenseSlice.reducer;

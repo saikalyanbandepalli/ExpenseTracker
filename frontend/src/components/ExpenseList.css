@@ -13,4 +13,27 @@
   .expense-list li {
     margin-bottom: 10px;
   }
+  .expense-item {
+    background-color: white; /* Set background color to white */
+    border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+    border-radius: 4px; /* Optional: Add rounded corners */
+    padding: 10px; /* Add padding for spacing */
+    margin-bottom: 10px; /* Space between items */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+    transition: transform 0.2s;
+    transform: scale(1.02); /* Optional: Add a transition for hover effect */
+  }
   
+
+  
+  
+  .category-box {
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 16px; /* Padding inside the category box */
+    color: #333; /* Dark text for readability */
+  }
+  
+  h2 {
+    margin: 0 0 10px; /* Adjust margin for headings */
+  }

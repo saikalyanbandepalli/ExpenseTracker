@@ -73,4 +73,24 @@ public class ExpenseController {
     public void deleteExpense(@PathVariable Long id) {
         expenseService.deleteExpense(id);
     }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Expense> updateExpense(
+            @PathVariable(value = "id") Long expenseId,
+            @RequestBody Expense updatedExpense) throws ResourceNotFoundException {
+
+        // Find the existing expense by ID
+         Expense existingExpense = expenseService.getExpensesById(expenseId).get();
+                //.orElseThrow(() -> new ResourceNotFoundException("Expense not found for this id :: " + expenseId));
+
+        // Update the existing expense fields
+        existingExpense.setName(updatedExpense.getName());
+        existingExpense.setAmount(updatedExpense.getAmount());
+        existingExpense.setCategory(updatedExpense.getCategory()); // Update the category
+
+        // Save the updated expense
+        final Expense savedExpense = expenseService.addExpense(existingExpense);
+
+        return ResponseEntity.ok(savedExpense);
+    }
 }

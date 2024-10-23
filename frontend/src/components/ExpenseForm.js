@@ -5,26 +5,21 @@ import { useAuth } from '../context/AuthContext'; // Import the AuthContext
 
 const ExpenseForm = () => {
   const { setExpenses } = useContext(ExpenseContext);
-  const {loggedUser} = useAuth(); // Get userId from AuthContex
+  const { loggedUser } = useAuth(); // Get userId from AuthContext
   const [name, setName] = useState('');
   const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState(''); // State for category
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
-    
     e.preventDefault();
-    //console.log("The user id is " + userId);
     try {
-      console.log("this is from expesnse form "+loggedUser);
       const response = await axiosInstance.post('/api/expenses/add', {
         name,
         amount,
         category, // Include category in the request
-       // userId,
         loggedUser // Include userId in the request
       });
-      console.log("this is from expese form "+loggedUser);
       
       // Update local state with the newly added expense
       setExpenses(prevExpenses => [...prevExpenses, response.data]);
@@ -38,32 +33,48 @@ const ExpenseForm = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Expense Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="number"
-          placeholder="Amount"
-          value={amount}
-          onChange={(e) => setAmount(Number(e.target.value))}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)} // Handle category input
-          required
-        />
-        <button type="submit">Add Expense</button>
+    <div className="container mt-4">
+      <h2>Add Expense</h2>
+      <form onSubmit={handleSubmit} className="needs-validation" noValidate>
+        <div className="mb-3">
+          <label htmlFor="expenseName" className="form-label">Expense Name</label>
+          <input
+            type="text"
+            id="expenseName"
+            className="form-control"
+            placeholder="Expense Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="amount" className="form-label">Amount</label>
+          <input
+            type="number"
+            id="amount"
+            className="form-control"
+            placeholder="Amount"
+            value={amount}
+            onChange={(e) => setAmount(Number(e.target.value))}
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="category" className="form-label">Category</label>
+          <input
+            type="text"
+            id="category"
+            className="form-control"
+            placeholder="Category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)} // Handle category input
+            required
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">Add Expense</button>
       </form>
-      {error && <p className="error">{error}</p>} {/* Display error message if any */}
+      {error && <p className="text-danger">{error}</p>} {/* Display error message if any */}
     </div>
   );
 };

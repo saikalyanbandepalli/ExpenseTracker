@@ -8,6 +8,8 @@ import AddExpense from './pages/AddExpense';
 import GetUser from './components/GetUser'; 
 import Register from './components/Register'; 
 import Login from './components/Login';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 import Logout from './components/Logout'; 
 
@@ -17,6 +19,10 @@ import ServerError from './components/ServerError'; // Import your custom Server
 import { Provider } from 'react-redux'; // Redux Provider
 import { PersistGate } from 'redux-persist/integration/react'; // PersistGate for Redux persist
 import store, { persistor } from './components/store'; 
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+/>
 
 function App() {
     return (

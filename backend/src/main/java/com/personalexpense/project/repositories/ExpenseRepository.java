@@ -20,7 +20,7 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
     @Query("SELECT e FROM Expense e JOIN e.user u WHERE u.username = :username")
     List<Expense> findByUserUsername(String username);
 
-
+     //Expense findById(Long id);
 
 }
 

@@ -48,3 +48,23 @@
     margin-top: 10px;
   }
   
+  .expense-list {
+    display: flex;
+    flex-direction: column; /* Stack categories vertically */
+    gap: 20px; /* Space between category boxes */
+    padding: 20px; /* Padding around the list */
+  }
+  
+  .category-box {
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 16px; /* Padding inside the category box */
+    background-color: #f9f9f9; /* Light background color for the box */
+  }
+  
+  .expense-items {
+    display: grid; /* Use grid layout for expense items */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid */
+    gap: 10px; /* Space between expense items */
+  }
+  

@@ -2,6 +2,9 @@ package com.personalexpense.project.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -16,8 +19,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Username is required") // Ensures the username is not null or empty
+    @Size(min = 3, max = 30, message = "Username must be between 3 and 30 characters") // Sets length constraints
     private String username;
+
+    @NotBlank(message = "Password is required") // Ensures the password is not null or empty
+    @Size(min = 6, max = 100, message = "Password must be at least 6 characters") // Sets minimum length for password
     private String password;
+
+    @NotBlank(message = "Email is required") // Ensures the email is not null or empty
+    @Email(message = "Email should be valid") // Validates the email format
     private String email;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

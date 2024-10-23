@@ -1,6 +1,10 @@
 package com.personalexpense.project.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -14,7 +18,23 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Name is required") // Ensures the name is not null and not empty
+    @Size(min = 3, max = 100, message = "Name must be between 3 and 100 characters")
     private String name;
+
+    @NotNull(message = "Amount is required") // Ensures the amount is not null
+    @DecimalMin(value = "0.01", message = "Amount must be greater than 0") // Ensures the amount is positive
+    private Double amount;
+
+    @NotBlank(message = "Category is required") // Ensures category is not null or empty
+    @Size(min = 3, max = 50, message = "Category must be between 3 and 50 characters")
+    private String category;
+    private LocalDate date;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
 
     public Long getId() {
         return id;
@@ -72,13 +92,6 @@ public class Expense {
         this.user = user;
     }
 
-    private double amount;
-    private String category;
-    private LocalDate date;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
 
     // Default constructor
 

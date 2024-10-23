@@ -3,12 +3,13 @@ import axiosInstance from '../hooks/axiosInstance';
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
-    const [roles, setRoles] = useState([]); // Initialize roles as an empty array
-    const [selectedRoles, setSelectedRoles] = useState([]); // State to track selected roles
+    const [roles, setRoles] = useState([]);
+    const [selectedRoles, setSelectedRoles] = useState([]);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState(''); // To handle error messages
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -37,11 +38,29 @@ const Register = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
 
+        // Check if any required fields are missing
+        if (!username) {
+            setErrorMessage('Please enter a username.');
+            return;
+        }
+        if (!password) {
+            setErrorMessage('Please enter a password.');
+            return;
+        }
+        if (!email) {
+            setErrorMessage('Please enter an email.');
+            return;
+        }
+        if (selectedRoles.length === 0) {
+            setErrorMessage('Please select at least one role.');
+            return;
+        }
+
         const payload = {
             username,
             password,
             email,
-            roles: selectedRoles.map(role => ({ name: role })), // Convert selected roles to an array of objects
+            roles: selectedRoles.map(role => ({ name: role })),
         };
 
         try {
@@ -97,8 +116,8 @@ const Register = () => {
                                     type="checkbox"
                                     id={role.name}
                                     value={role.name}
-                                    checked={selectedRoles.includes(role.name)} // Check if this role is selected
-                                    onChange={() => handleRoleChange(role.name)} // Handle role selection
+                                    checked={selectedRoles.includes(role.name)}
+                                    onChange={() => handleRoleChange(role.name)}
                                 />
                                 <label htmlFor={role.name} className="ms-2">{role.name}</label>
                             </div>
@@ -109,6 +128,7 @@ const Register = () => {
                 </div>
                 <button type="submit" className="btn btn-primary w-100">Register</button>
             </form>
+            {errorMessage && <p className="text-danger text-center mt-3">{errorMessage}</p>}
             {message && <p className="text-success text-center mt-3">{message}</p>}
         </div>
     );

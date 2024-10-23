@@ -1,40 +1,26 @@
 import { configureStore } from '@reduxjs/toolkit';
-import expenseReducer from './expenseSlice';
+import expenseReducer from './expenseSlice'; // Your expense slice
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // Correct import
 
-// Load persisted state from local storage
-const loadState = () => {
-  try {
-    const serializedState = localStorage.getItem('reduxState');
-    if (serializedState === null) {
-      return undefined; // No state in localStorage, return undefined for initial state
-    }
-    return JSON.parse(serializedState);
-  } catch (err) {
-    return undefined;
-  }
+const persistConfig = {
+  key: 'root',
+  storage, // Use local storage
 };
 
-// Save state to local storage
-const saveState = (state) => {
-  try {
-    const serializedState = JSON.stringify(state);
-    localStorage.setItem('reduxState', serializedState);
-  } catch (err) {
-    console.error('Could not save state', err);
-  }
-};
+const persistedReducer = persistReducer(persistConfig, expenseReducer);
 
-// Create store with persisted state
-const persistedState = loadState();
-
-export const store = configureStore({
+const store = configureStore({
   reducer: {
-    expenses: expenseReducer,
+    expenses: persistedReducer, // Use the persisted reducer
   },
-  preloadedState: persistedState, // Initialize store with persisted state
+  middleware: (getDefaultMiddleware) => 
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'], // Ignore these actions
+      },
+    }),
 });
 
-// Subscribe to store changes to save state in localStorage
-store.subscribe(() => {
-  saveState(store.getState());
-});
+export const persistor = persistStore(store);
+export default store;

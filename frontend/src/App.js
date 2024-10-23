@@ -8,13 +8,19 @@ import AddExpense from './pages/AddExpense';
 import GetUser from './components/GetUser'; 
 import Register from './components/Register'; 
 import Login from './components/Login';
+
 import Logout from './components/Logout'; 
+
 import NotFound from './components/NotFound'; // Import your custom NotFound component
 import ServerError from './components/ServerError'; // Import your custom ServerError component
 //import ErrorBoundary from './components/ErrorBoundary'; // Import ErrorBoundary
+import { Provider } from 'react-redux'; // Redux Provider
+import { PersistGate } from 'redux-persist/integration/react'; // PersistGate for Redux persist
+import store, { persistor } from './components/store'; 
 
 function App() {
     return (
+        <Provider store={store}>
         <AuthProvider>
             <ExpenseProvider>
                 <Router>
@@ -35,6 +41,8 @@ function App() {
                 </Router>
             </ExpenseProvider>
         </AuthProvider>
+        </Provider>
+        
     );
 }
 

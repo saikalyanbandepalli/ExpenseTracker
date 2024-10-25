@@ -26,6 +26,7 @@ const ExpenseList = () => {
   const [draggedExpense, setDraggedExpense] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [categoryToUpdate, setCategoryToUpdate] = useState('');
+  const [error, setError] = useState(null); // State for error messages
 
   useEffect(() => {
     const fetchExpenses = async () => {
@@ -37,6 +38,7 @@ const ExpenseList = () => {
         setContextExpenses(response.data);
         dispatch(setExpenses(response.data));
       } catch (error) {
+        setError('Error fetching expenses. Please try again.'); // Set error message
         console.error('Error fetching expenses:', error);
       }
     };
@@ -69,6 +71,7 @@ const ExpenseList = () => {
   };
 
   const handleConfirm = async () => {
+    setError(null); // Clear previous error messages
     // Proceed with updating the expense category in the backend
     try {
       await axiosInstance.put(`/api/expenses/update/${draggedExpense.id}`, {
@@ -89,6 +92,7 @@ const ExpenseList = () => {
         )
       ));
     } catch (error) {
+      setError('Error updating expense category. Please try again.'); // Set error message
       console.error('Error updating expense category:', error);
     }
     setShowModal(false); // Close the modal
@@ -135,6 +139,7 @@ const ExpenseList = () => {
           onCancel={handleCancel}
         />
       )}
+      {error && <p className="text-danger mt-3">{error}</p>} {/* Display error message if any */}
     </div>
   );
 };

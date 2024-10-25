@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../hooks/axiosInstance';
@@ -14,6 +13,7 @@ const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        setError(null); // Clear previous error messages
 
         try {
             const response = await axiosInstance.post('api/users/login', { username, password });
@@ -22,10 +22,19 @@ const Login = () => {
                 localStorage.setItem('token', token);
                 login(username); // Set authenticated state
                 navigate('/add-expense');
-                console.log(username); // Redirect to home after login
             }
         } catch (err) {
-            setError('Invalid username or password');
+            // Handle different error cases
+            if (err.response) {
+                // Server responded with a status code outside of the 2xx range
+                setError(err.response.data.message || 'Invalid username or password'); // Use server message if available
+            } else if (err.request) {
+                // Request was made but no response was received
+                setError('Network error. Please try again later.');
+            } else {
+                // Something else happened
+                setError('An error occurred. Please try again.');
+            }
         }
     };
 
@@ -57,7 +66,7 @@ const Login = () => {
                 </div>
                 <button type="submit" className="btn btn-success w-100">Login</button>
             </form>
-            {error && <p className="text-danger text-center mt-2">{error}</p>}
+            {error && <p className="text-danger text-center mt-2">{error}</p>} {/* Display error message if any */}
         </div>
     );
 };

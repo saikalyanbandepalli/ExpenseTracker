@@ -1,84 +1,279 @@
-2024-10-23 15:35:14 - Starting ProjectApplication using Java 22.0.2 with PID 14548 (C:\Users\Bande\Desktop\Expensetracker\backend\target\classes started by Bande in C:\Users\Bande\Desktop\Expensetracker\backend)
-2024-10-23 15:35:14 - Running with Spring Boot v3.3.4, Spring v6.1.13
-2024-10-23 15:35:14 - No active profile set, falling back to 1 default profile: "default"
-2024-10-23 15:35:14 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-10-23 15:35:14 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-10-23 15:35:16 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-10-23 15:35:16 - Finished Spring Data repository scanning in 71 ms. Found 3 JPA repository interfaces.
-2024-10-23 15:35:17 - Tomcat initialized with port 8080 (http)
-2024-10-23 15:35:17 - Starting service [Tomcat]
-2024-10-23 15:35:17 - Starting Servlet engine: [Apache Tomcat/10.1.30]
-2024-10-23 15:35:17 - Initializing Spring embedded WebApplicationContext
-2024-10-23 15:35:17 - Root WebApplicationContext: initialization completed in 2690 ms
-2024-10-23 15:35:17 - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-10-23 15:35:17 - HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-10-23 15:35:17 - HHH000026: Second-level cache disabled
-2024-10-23 15:35:18 - No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-10-23 15:35:18 - HikariPool-1 - Starting...
-2024-10-23 15:35:18 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@24531c3d
-2024-10-23 15:35:18 - HikariPool-1 - Start completed.
-2024-10-23 15:35:18 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-10-23 15:35:18 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2024-10-23 15:35:20 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-10-23 15:35:20 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-10-23 15:35:20 - Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-10-23 15:35:21 - Filter 'jwtRequestFilter' configured for use
-2024-10-23 15:35:21 - Global AuthenticationManager configured with UserDetailsService bean with name userService
-2024-10-23 15:35:21 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-10-23 15:35:22 - 16 mappings in 'requestMappingHandlerMapping'
-2024-10-23 15:35:22 - Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
-2024-10-23 15:35:22 - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
-2024-10-23 15:35:22 - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2024-10-23 15:35:22 - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
-2024-10-23 15:35:22 - LiveReload server is running on port 35729
-2024-10-23 15:35:22 - Tomcat started on port 8080 (http) with context path '/'
-2024-10-23 15:35:22 - Started ProjectApplication in 9.198 seconds (process running for 10.046)
-2024-10-23 15:35:31 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-10-23 15:35:31 - Initializing Servlet 'dispatcherServlet'
-2024-10-23 15:35:31 - Detected StandardServletMultipartResolver
-2024-10-23 15:35:31 - Detected AcceptHeaderLocaleResolver
-2024-10-23 15:35:31 - Detected FixedThemeResolver
-2024-10-23 15:35:31 - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1d83920e
-2024-10-23 15:35:31 - Detected org.springframework.web.servlet.support.SessionFlashMapManager@67772f86
-2024-10-23 15:35:31 - enableLoggingRequestDetails='true': request parameters and headers will be shown which may lead to unsafe logging of potentially sensitive data
-2024-10-23 15:35:31 - Completed initialization in 6 ms
-2024-10-23 15:35:31 - Securing OPTIONS /api/users/login
-2024-10-23 15:35:31 - Securing POST /api/users/login
-2024-10-23 15:35:31 - Incoming request URI: /api/users/login
-2024-10-23 15:35:31 - Authorization header: null
-2024-10-23 15:35:31 - Bypassing security for URI: /api/users/login
-2024-10-23 15:35:31 - Set SecurityContextHolder to anonymous SecurityContext
-2024-10-23 15:35:31 - Secured POST /api/users/login
-2024-10-23 15:35:31 - POST "/api/users/login", parameters={}
-2024-10-23 15:35:31 - Mapped to com.personalexpense.project.controller.UserController#loginUser(LoginRequest)
-2024-10-23 15:35:32 - Read "application/json;charset=UTF-8" to [com.personalexpense.project.dto.LoginRequest@1524f31e]
-2024-10-23 15:35:32 - Securing POST /api/users/login
-2024-10-23 15:35:32 - Incoming request URI: /api/users/login
-2024-10-23 15:35:32 - Authorization header: null
-2024-10-23 15:35:32 - Bypassing security for URI: /api/users/login
-2024-10-23 15:35:32 - Set SecurityContextHolder to anonymous SecurityContext
-2024-10-23 15:35:32 - Secured POST /api/users/login
-2024-10-23 15:35:32 - POST "/api/users/login", parameters={}
-2024-10-23 15:35:32 - Mapped to com.personalexpense.project.controller.UserController#loginUser(LoginRequest)
-2024-10-23 15:35:32 - Read "application/json;charset=UTF-8" to [com.personalexpense.project.dto.LoginRequest@3786812d]
-2024-10-23 15:35:32 - Failed to find user 'f'
-2024-10-23 15:35:32 - Failed to find user 'f'
-2024-10-23 15:35:32 - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
-2024-10-23 15:35:32 - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
-2024-10-23 15:35:32 - Writing [com.personalexpense.project.dto.LoginResponse@427e7e5]
-2024-10-23 15:35:32 - Writing [com.personalexpense.project.dto.LoginResponse@680f46cf]
-2024-10-23 15:35:32 - Completed 401 UNAUTHORIZED
-2024-10-23 15:35:32 - Completed 401 UNAUTHORIZED
-2024-10-23 15:35:33 - Securing POST /api/users/login
-2024-10-23 15:35:33 - Incoming request URI: /api/users/login
-2024-10-23 15:35:33 - Authorization header: null
-2024-10-23 15:35:33 - Bypassing security for URI: /api/users/login
-2024-10-23 15:35:33 - Set SecurityContextHolder to anonymous SecurityContext
-2024-10-23 15:35:33 - Secured POST /api/users/login
-2024-10-23 15:35:33 - POST "/api/users/login", parameters={}
-2024-10-23 15:35:33 - Mapped to com.personalexpense.project.controller.UserController#loginUser(LoginRequest)
-2024-10-23 15:35:33 - Read "application/json;charset=UTF-8" to [com.personalexpense.project.dto.LoginRequest@6f51ae69]
-2024-10-23 15:35:33 - Failed to find user 'f'
-2024-10-23 15:35:33 - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
-2024-10-23 15:35:33 - Writing [com.personalexpense.project.dto.LoginResponse@4084a887]
-2024-10-23 15:35:33 - Completed 401 UNAUTHORIZED
+2024-10-25 21:21:50 - Starting ProjectApplication using Java 22.0.2 with PID 4552 (C:\Users\Bande\Desktop\Expensetracker\backend\target\classes started by Bande in C:\Users\Bande\Desktop\Expensetracker\backend)
+2024-10-25 21:21:50 - Running with Spring Boot v3.3.4, Spring v6.1.13
+2024-10-25 21:21:50 - No active profile set, falling back to 1 default profile: "default"
+2024-10-25 21:21:50 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-25 21:21:50 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-25 21:21:51 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-25 21:21:52 - Finished Spring Data repository scanning in 149 ms. Found 3 JPA repository interfaces.
+2024-10-25 21:21:52 - Tomcat initialized with port 8080 (http)
+2024-10-25 21:21:52 - Starting service [Tomcat]
+2024-10-25 21:21:52 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-25 21:21:53 - Initializing Spring embedded WebApplicationContext
+2024-10-25 21:21:53 - Root WebApplicationContext: initialization completed in 2747 ms
+2024-10-25 21:21:53 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-25 21:21:53 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-25 21:21:53 - HHH000026: Second-level cache disabled
+2024-10-25 21:21:53 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-25 21:21:53 - HikariPool-1 - Starting...
+2024-10-25 21:21:54 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@59faa929
+2024-10-25 21:21:54 - HikariPool-1 - Start completed.
+2024-10-25 21:21:54 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-25 21:21:54 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-10-25 21:21:56 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-25 21:21:56 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-25 21:21:56 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-10-25 21:21:57 - Filter 'jwtRequestFilter' configured for use
+2024-10-25 21:21:57 - Global AuthenticationManager configured with UserDetailsService bean with name userService
+2024-10-25 21:21:57 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-25 21:21:57 - 16 mappings in 'requestMappingHandlerMapping'
+2024-10-25 21:21:57 - Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-10-25 21:21:57 - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-10-25 21:21:57 - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-25 21:21:57 - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-25 21:21:58 - LiveReload server is running on port 35729
+2024-10-25 21:21:58 - Tomcat started on port 8080 (http) with context path '/'
+2024-10-25 21:21:58 - Started ProjectApplication in 8.811 seconds (process running for 10.61)
+2024-10-25 21:22:14 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-25 21:22:14 - Initializing Servlet 'dispatcherServlet'
+2024-10-25 21:22:14 - Detected StandardServletMultipartResolver
+2024-10-25 21:22:14 - Detected AcceptHeaderLocaleResolver
+2024-10-25 21:22:14 - Detected FixedThemeResolver
+2024-10-25 21:22:14 - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@850cd76
+2024-10-25 21:22:14 - Detected org.springframework.web.servlet.support.SessionFlashMapManager@2c7b7410
+2024-10-25 21:22:14 - enableLoggingRequestDetails='true': request parameters and headers will be shown which may lead to unsafe logging of potentially sensitive data
+2024-10-25 21:22:14 - Completed initialization in 8 ms
+2024-10-25 21:22:14 - Securing GET /api/roles/getroles
+2024-10-25 21:22:14 - Incoming request URI: /api/roles/getroles
+2024-10-25 21:22:14 - Authorization header: null
+2024-10-25 21:22:14 - Bypassing security for URI: /api/roles/getroles
+2024-10-25 21:22:14 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-25 21:22:14 - Secured GET /api/roles/getroles
+2024-10-25 21:22:14 - GET "/api/roles/getroles", parameters={}
+2024-10-25 21:22:14 - Mapped to com.personalexpense.project.controller.RoleController#getAllRoles()
+2024-10-25 21:22:14 - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-10-25 21:22:14 - Writing [[com.personalexpense.project.dto.RoleDTO@fe72ce2, com.personalexpense.project.dto.RoleDTO@4dab5762]]
+2024-10-25 21:22:14 - Completed 200 OK
+2024-10-25 21:22:14 - Securing GET /api/roles/getroles
+2024-10-25 21:22:14 - Incoming request URI: /api/roles/getroles
+2024-10-25 21:22:14 - Authorization header: null
+2024-10-25 21:22:14 - Bypassing security for URI: /api/roles/getroles
+2024-10-25 21:22:14 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-25 21:22:14 - Secured GET /api/roles/getroles
+2024-10-25 21:22:14 - GET "/api/roles/getroles", parameters={}
+2024-10-25 21:22:14 - Mapped to com.personalexpense.project.controller.RoleController#getAllRoles()
+2024-10-25 21:22:14 - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-10-25 21:22:14 - Writing [[com.personalexpense.project.dto.RoleDTO@18d2626a, com.personalexpense.project.dto.RoleDTO@358e0f9d]]
+2024-10-25 21:22:14 - Completed 200 OK
+2024-10-25 21:22:29 - Securing OPTIONS /api/users/register
+2024-10-25 21:22:29 - Securing POST /api/users/register
+2024-10-25 21:22:29 - Incoming request URI: /api/users/register
+2024-10-25 21:22:29 - Authorization header: null
+2024-10-25 21:22:29 - Bypassing security for URI: /api/users/register
+2024-10-25 21:22:29 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-25 21:22:29 - Secured POST /api/users/register
+2024-10-25 21:22:29 - POST "/api/users/register", parameters={}
+2024-10-25 21:22:29 - Mapped to com.personalexpense.project.controller.UserController#registerUser(User, BindingResult)
+2024-10-25 21:22:29 - Read "application/json;charset=UTF-8" to [User{id=null, username='s', email='s@gmail.com', roles=[Role{id=null, name='admin'}], expenses=null}]
+2024-10-25 21:22:30 - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-10-25 21:22:30 - Writing [User{id=128, username='s', email='s@gmail.com', roles=[Role{id=1, name='admin'}], expenses=null}]
+2024-10-25 21:22:30 - Completed 201 CREATED
+2024-10-25 21:30:15 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-25 21:30:15 - HikariPool-1 - Shutdown initiated...
+2024-10-25 21:30:15 - HikariPool-1 - Shutdown completed.
+2024-10-25 21:30:25 - Starting ProjectApplication using Java 22.0.2 with PID 23260 (C:\Users\Bande\Desktop\Expensetracker\backend\target\classes started by Bande in C:\Users\Bande\Desktop\Expensetracker\backend)
+2024-10-25 21:30:25 - Running with Spring Boot v3.3.4, Spring v6.1.13
+2024-10-25 21:30:25 - No active profile set, falling back to 1 default profile: "default"
+2024-10-25 21:30:25 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-25 21:30:25 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-25 21:30:27 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-25 21:30:27 - Finished Spring Data repository scanning in 98 ms. Found 3 JPA repository interfaces.
+2024-10-25 21:30:28 - Tomcat initialized with port 8080 (http)
+2024-10-25 21:30:28 - Starting service [Tomcat]
+2024-10-25 21:30:28 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-25 21:30:28 - Initializing Spring embedded WebApplicationContext
+2024-10-25 21:30:28 - Root WebApplicationContext: initialization completed in 2458 ms
+2024-10-25 21:30:28 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-25 21:30:28 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-25 21:30:28 - HHH000026: Second-level cache disabled
+2024-10-25 21:30:29 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-25 21:30:29 - HikariPool-1 - Starting...
+2024-10-25 21:30:30 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@60410618
+2024-10-25 21:30:30 - HikariPool-1 - Start completed.
+2024-10-25 21:30:30 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-25 21:30:30 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-10-25 21:30:31 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-25 21:30:32 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-25 21:30:33 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-10-25 21:30:33 - Filter 'jwtRequestFilter' configured for use
+2024-10-25 21:30:33 - Global AuthenticationManager configured with UserDetailsService bean with name userService
+2024-10-25 21:30:34 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-25 21:30:34 - 16 mappings in 'requestMappingHandlerMapping'
+2024-10-25 21:30:34 - Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-10-25 21:30:34 - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-10-25 21:30:34 - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-25 21:30:34 - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-25 21:30:34 - LiveReload server is running on port 35729
+2024-10-25 21:30:34 - Tomcat started on port 8080 (http) with context path '/'
+2024-10-25 21:30:34 - Started ProjectApplication in 10.066 seconds (process running for 10.658)
+2024-10-25 21:30:44 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-25 21:30:44 - Initializing Servlet 'dispatcherServlet'
+2024-10-25 21:30:44 - Detected StandardServletMultipartResolver
+2024-10-25 21:30:44 - Detected AcceptHeaderLocaleResolver
+2024-10-25 21:30:44 - Detected FixedThemeResolver
+2024-10-25 21:30:44 - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@12a011a6
+2024-10-25 21:30:44 - Detected org.springframework.web.servlet.support.SessionFlashMapManager@5840a73
+2024-10-25 21:30:44 - enableLoggingRequestDetails='true': request parameters and headers will be shown which may lead to unsafe logging of potentially sensitive data
+2024-10-25 21:30:44 - Completed initialization in 5 ms
+2024-10-25 21:30:44 - Securing GET /api/roles/getroles
+2024-10-25 21:30:45 - Incoming request URI: /api/roles/getroles
+2024-10-25 21:30:45 - Authorization header: null
+2024-10-25 21:30:45 - Bypassing security for URI: /api/roles/getroles
+2024-10-25 21:30:45 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-25 21:30:45 - Secured GET /api/roles/getroles
+2024-10-25 21:30:45 - GET "/api/roles/getroles", parameters={}
+2024-10-25 21:30:45 - Mapped to com.personalexpense.project.controller.RoleController#getAllRoles()
+2024-10-25 21:30:45 - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-10-25 21:30:45 - Writing [[com.personalexpense.project.dto.RoleDTO@1c950024, com.personalexpense.project.dto.RoleDTO@350b67f5]]
+2024-10-25 21:30:45 - Completed 200 OK
+2024-10-25 21:30:45 - Securing GET /api/roles/getroles
+2024-10-25 21:30:45 - Incoming request URI: /api/roles/getroles
+2024-10-25 21:30:45 - Authorization header: null
+2024-10-25 21:30:45 - Bypassing security for URI: /api/roles/getroles
+2024-10-25 21:30:45 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-25 21:30:45 - Secured GET /api/roles/getroles
+2024-10-25 21:30:45 - GET "/api/roles/getroles", parameters={}
+2024-10-25 21:30:45 - Mapped to com.personalexpense.project.controller.RoleController#getAllRoles()
+2024-10-25 21:30:45 - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-10-25 21:30:45 - Writing [[com.personalexpense.project.dto.RoleDTO@5f0449f5, com.personalexpense.project.dto.RoleDTO@2a6a83e9]]
+2024-10-25 21:30:45 - Completed 200 OK
+2024-10-25 21:31:07 - Securing OPTIONS /api/users/register
+2024-10-25 21:31:07 - Securing POST /api/users/register
+2024-10-25 21:31:07 - Incoming request URI: /api/users/register
+2024-10-25 21:31:07 - Authorization header: null
+2024-10-25 21:31:07 - Bypassing security for URI: /api/users/register
+2024-10-25 21:31:07 - Set SecurityContextHolder to anonymous SecurityContext
+2024-10-25 21:31:07 - Secured POST /api/users/register
+2024-10-25 21:31:07 - POST "/api/users/register", parameters={}
+2024-10-25 21:31:07 - Mapped to com.personalexpense.project.controller.UserController#registerUser(User, BindingResult)
+2024-10-25 21:31:07 - Read "application/json;charset=UTF-8" to [User{id=null, username='d', email='d@gmail.com', roles=[Role{id=null, name='admin'}], expenses=null}]
+2024-10-25 21:31:07 - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-10-25 21:31:07 - Writing [{password=Password must be at least 6 characters, username=Username must be between 3 and 30 charact (truncated)...]
+2024-10-25 21:31:07 - Completed 400 BAD_REQUEST
+2024-10-25 21:32:49 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m19s509ms181µs900ns).
+2024-10-25 21:32:50 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-25 21:32:50 - HikariPool-1 - Shutdown initiated...
+2024-10-25 21:32:50 - HikariPool-1 - Shutdown completed.
+2024-10-25 21:32:53 - Starting ProjectApplication using Java 22.0.2 with PID 18572 (C:\Users\Bande\Desktop\Expensetracker\backend\target\classes started by Bande in C:\Users\Bande\Desktop\Expensetracker\backend)
+2024-10-25 21:32:53 - Running with Spring Boot v3.3.4, Spring v6.1.13
+2024-10-25 21:32:53 - No active profile set, falling back to 1 default profile: "default"
+2024-10-25 21:32:54 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-25 21:32:54 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-25 21:32:55 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-25 21:32:55 - Finished Spring Data repository scanning in 84 ms. Found 3 JPA repository interfaces.
+2024-10-25 21:32:56 - Tomcat initialized with port 8080 (http)
+2024-10-25 21:32:56 - Starting service [Tomcat]
+2024-10-25 21:32:56 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-25 21:32:56 - Initializing Spring embedded WebApplicationContext
+2024-10-25 21:32:56 - Root WebApplicationContext: initialization completed in 2558 ms
+2024-10-25 21:32:56 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-25 21:32:56 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-25 21:32:57 - HHH000026: Second-level cache disabled
+2024-10-25 21:32:57 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-25 21:32:57 - HikariPool-1 - Starting...
+2024-10-25 21:32:58 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@52d5a791
+2024-10-25 21:32:58 - HikariPool-1 - Start completed.
+2024-10-25 21:32:58 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-25 21:32:58 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-10-25 21:32:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-25 21:33:00 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-25 21:33:00 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-10-25 21:33:01 - Filter 'jwtRequestFilter' configured for use
+2024-10-25 21:33:01 - Global AuthenticationManager configured with UserDetailsService bean with name userService
+2024-10-25 21:33:01 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-25 21:33:01 - 16 mappings in 'requestMappingHandlerMapping'
+2024-10-25 21:33:01 - Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-10-25 21:33:01 - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-10-25 21:33:02 - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-25 21:33:02 - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-25 21:33:02 - LiveReload server is running on port 35729
+2024-10-25 21:33:02 - Tomcat started on port 8080 (http) with context path '/'
+2024-10-25 21:33:02 - Started ProjectApplication in 9.307 seconds (process running for 10.055)
+2024-10-25 21:36:10 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-25 21:36:10 - HikariPool-1 - Shutdown initiated...
+2024-10-25 21:36:10 - HikariPool-1 - Shutdown completed.
+2024-10-25 21:36:12 - Starting ProjectApplication using Java 22.0.2 with PID 10312 (C:\Users\Bande\Desktop\Expensetracker\backend\target\classes started by Bande in C:\Users\Bande\Desktop\Expensetracker\backend)
+2024-10-25 21:36:12 - Running with Spring Boot v3.3.4, Spring v6.1.13
+2024-10-25 21:36:12 - No active profile set, falling back to 1 default profile: "default"
+2024-10-25 21:36:13 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-25 21:36:13 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-25 21:36:14 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-25 21:36:14 - Finished Spring Data repository scanning in 88 ms. Found 3 JPA repository interfaces.
+2024-10-25 21:36:15 - Tomcat initialized with port 8080 (http)
+2024-10-25 21:36:15 - Starting service [Tomcat]
+2024-10-25 21:36:15 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-25 21:36:15 - Initializing Spring embedded WebApplicationContext
+2024-10-25 21:36:15 - Root WebApplicationContext: initialization completed in 2369 ms
+2024-10-25 21:36:15 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-25 21:36:15 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-25 21:36:15 - HHH000026: Second-level cache disabled
+2024-10-25 21:36:16 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-25 21:36:16 - HikariPool-1 - Starting...
+2024-10-25 21:36:16 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@71c913be
+2024-10-25 21:36:16 - HikariPool-1 - Start completed.
+2024-10-25 21:36:16 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-25 21:36:16 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-10-25 21:36:18 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-25 21:36:18 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-25 21:36:19 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-10-25 21:36:20 - Filter 'jwtRequestFilter' configured for use
+2024-10-25 21:36:20 - Global AuthenticationManager configured with UserDetailsService bean with name userService
+2024-10-25 21:36:20 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-25 21:36:20 - 16 mappings in 'requestMappingHandlerMapping'
+2024-10-25 21:36:20 - Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-10-25 21:36:20 - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-10-25 21:36:20 - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-25 21:36:20 - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-25 21:36:21 - LiveReload server is running on port 35729
+2024-10-25 21:36:21 - Tomcat started on port 8080 (http) with context path '/'
+2024-10-25 21:36:21 - Started ProjectApplication in 8.942 seconds (process running for 9.694)
+2024-10-25 21:36:41 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-25 21:36:41 - HikariPool-1 - Shutdown initiated...
+2024-10-25 21:36:41 - HikariPool-1 - Shutdown completed.
+2024-10-25 21:36:43 - Starting ProjectApplication using Java 22.0.2 with PID 3216 (C:\Users\Bande\Desktop\Expensetracker\backend\target\classes started by Bande in C:\Users\Bande\Desktop\Expensetracker\backend)
+2024-10-25 21:36:43 - Running with Spring Boot v3.3.4, Spring v6.1.13
+2024-10-25 21:36:43 - No active profile set, falling back to 1 default profile: "default"
+2024-10-25 21:36:43 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-25 21:36:43 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-25 21:36:44 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-25 21:36:44 - Finished Spring Data repository scanning in 61 ms. Found 3 JPA repository interfaces.
+2024-10-25 21:36:45 - Tomcat initialized with port 8080 (http)
+2024-10-25 21:36:45 - Starting service [Tomcat]
+2024-10-25 21:36:45 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-25 21:36:45 - Initializing Spring embedded WebApplicationContext
+2024-10-25 21:36:45 - Root WebApplicationContext: initialization completed in 2021 ms
+2024-10-25 21:36:46 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-25 21:36:46 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-25 21:36:46 - HHH000026: Second-level cache disabled
+2024-10-25 21:36:46 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-25 21:36:46 - HikariPool-1 - Starting...
+2024-10-25 21:36:46 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@df12a2e
+2024-10-25 21:36:46 - HikariPool-1 - Start completed.
+2024-10-25 21:36:46 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-25 21:36:46 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-10-25 21:36:48 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-25 21:36:48 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-25 21:36:48 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-10-25 21:36:49 - Filter 'jwtRequestFilter' configured for use
+2024-10-25 21:36:49 - Global AuthenticationManager configured with UserDetailsService bean with name userService
+2024-10-25 21:36:49 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-25 21:36:49 - 16 mappings in 'requestMappingHandlerMapping'
+2024-10-25 21:36:49 - Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-10-25 21:36:49 - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-10-25 21:36:49 - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-25 21:36:49 - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-25 21:36:50 - LiveReload server is running on port 35729
+2024-10-25 21:36:50 - Tomcat started on port 8080 (http) with context path '/'
+2024-10-25 21:36:50 - Started ProjectApplication in 7.127 seconds (process running for 7.719)
+2024-10-25 21:36:57 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-25 21:36:57 - HikariPool-1 - Shutdown initiated...
+2024-10-25 21:36:57 - HikariPool-1 - Shutdown completed.

@@ -3,6 +3,10 @@ package com.personalexpense.project.dto;
 public class RoleDTO {
     private int id;
 
+    public RoleDTO() {
+
+    }
+
     public String getName() {
         return name;
     }

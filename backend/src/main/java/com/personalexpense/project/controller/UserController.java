@@ -1,5 +1,6 @@
 package com.personalexpense.project.controller;
 
+
 import com.personalexpense.project.Jwt.JwtUtil;
 import com.personalexpense.project.dto.LoginRequest;
 import com.personalexpense.project.dto.LoginResponse;
@@ -9,6 +10,7 @@ import com.personalexpense.project.model.User;
 import com.personalexpense.project.repositories.RoleRepository;
 import com.personalexpense.project.services.ExpenseService;
 import com.personalexpense.project.services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +22,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -52,15 +53,28 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<User> registerUser(@RequestBody User user) {
+    public ResponseEntity<?> registerUser(
+            @Valid @RequestBody User user, // @Valid for validation
+            BindingResult result) {        // BindingResult for error handling
+
+        // Handle validation errors
+        if (result.hasErrors()) {
+            // Create a map for validation errors
+            Map<String, String> errors = new HashMap<>();
+            for (FieldError error : result.getFieldErrors()) {
+                errors.put(error.getField(), error.getDefaultMessage());
+            }
+            // Return the validation errors with BAD_REQUEST status
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
+        }
+
         // Log received user data
         System.out.println("Received user data: " + user);
         System.out.println("Roles: " + user.getRoles());
 
-        // Validate user details
-        if (user == null || user.getUsername() == null || user.getPassword() == null ||
-                user.getRoles() == null || user.getRoles().isEmpty()) {
-            return ResponseEntity.badRequest().body(null); // Return 400 if validation fails
+        // Additional manual validation to ensure roles are present
+        if (user.getRoles() == null || user.getRoles().isEmpty()) {
+            return ResponseEntity.badRequest().body("Roles are required."); // Return 400 if roles are missing
         }
 
         // Extract role names directly from the incoming User object
@@ -77,7 +91,7 @@ public class UserController {
         // If no valid roles are found in the database, return a 400 BAD REQUEST
         if (roleEntities.isEmpty()) {
             System.out.println("No valid roles found for names: " + roleNames);
-            return ResponseEntity.badRequest().body(null); // Return 400 if no valid roles
+            return ResponseEntity.badRequest().body("Invalid roles provided."); // Return 400 if no valid roles
         }
 
         // Log the fetched role entities
@@ -94,9 +108,6 @@ public class UserController {
 
         // Check if user creation was successful
         if (createdUser != null) {
-            // Handle any additional logic, such as managing expenses, if needed
-            // ...
-
             return ResponseEntity.status(HttpStatus.CREATED).body(createdUser); // Return 201 Created with the user
         } else {
             // Log if there was an error creating the user
@@ -108,42 +119,59 @@ public class UserController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> loginUser(
+            @Valid @RequestBody LoginRequest loginRequest, // Validating login request
+            BindingResult result) {                       // BindingResult for validation errors
+
+        // Handle validation errors
+        if (result.hasErrors()) {
+            // Create a map to collect validation error messages
+            Map<String, String> errors = new HashMap<>();
+            for (FieldError error : result.getFieldErrors()) {
+                errors.put(error.getField(), error.getDefaultMessage());
+            }
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors); // Return 400 Bad Request with validation errors
+        }
+
         try {
+            // Log the received username
             System.out.println(loginRequest.getUsername());
+
+            // Check if username is null
             if (loginRequest.getUsername() == null) {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new LoginResponse("User not found"));
             }
+
             // Authenticate the user using the provided username and password
             Authentication auth = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
             );
 
+            // Load user details
             UserDetails userDetails = userService.loadUserByUsername(loginRequest.getUsername());
 
-            // Generate JWT
+            // Generate JWT token
             String jwt = jwtUtil.generateToken(userDetails);
 
-            // Set the authentication in the context
+            // Set the authentication in the security context
             SecurityContextHolder.getContext().setAuthentication(auth);
 
-            // Return the JWT in the response
+            // Return JWT token in the response
             return ResponseEntity.ok(new LoginResponse(jwt));
 
-        }
-        catch (InternalAuthenticationServiceException e) {
-            // Log the exception and return a custom message
+        } catch (InternalAuthenticationServiceException e) {
+            // Log the exception and return a custom message for multiple user issues
             System.out.println("Authentication failed: " + e.getMessage());
             String errorMessage = "Authentication error: Multiple users found with the same credentials. Please contact support.";
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new LoginResponse(errorMessage));
 
-        }
-        catch (BadCredentialsException e) {
-            // Return error response with a message
+        } catch (BadCredentialsException e) {
+            // Return error response with invalid credentials message
             String errorMessage = "Invalid credentials";
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new LoginResponse(errorMessage));
+
         } catch (Exception e) {
-            // Handle other exceptions (e.g., user not found)
+            // Log other exceptions and return a general error response
             e.printStackTrace();
             String errorMessage = "An error occurred during authentication";
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new LoginResponse(errorMessage));

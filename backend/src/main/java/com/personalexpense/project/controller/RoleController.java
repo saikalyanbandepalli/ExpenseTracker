@@ -6,6 +6,7 @@ import com.personalexpense.project.dto.RoleDTO;
 import com.personalexpense.project.model.Role;
 
 import com.personalexpense.project.services.RoleService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,7 @@ public class RoleController {
     }
 
     @PostMapping("/addrole")
-    public ResponseEntity<Role> addRole(@RequestBody Role role) {
+    public ResponseEntity<Role> addRole(@Valid @RequestBody Role role) {
         Role createdRole = roleService.createRole(role);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdRole);
     }

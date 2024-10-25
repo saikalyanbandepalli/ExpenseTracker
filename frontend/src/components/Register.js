@@ -19,6 +19,7 @@ const Register = () => {
                 setRoles(response.data);
             } catch (error) {
                 console.error('Error fetching roles:', error);
+                setErrorMessage('Failed to load roles. Please try again later.'); // Add error message for role fetching
             }
         };
 
@@ -34,10 +35,11 @@ const Register = () => {
             return newSelected;
         });
     };
-
     const handleRegister = async (e) => {
         e.preventDefault();
-
+        setErrorMessage('');
+        setMessage('');
+    
         // Check if any required fields are missing
         if (!username) {
             setErrorMessage('Please enter a username.');
@@ -55,23 +57,43 @@ const Register = () => {
             setErrorMessage('Please select at least one role.');
             return;
         }
-
+    
         const payload = {
             username,
             password,
             email,
             roles: selectedRoles.map(role => ({ name: role })),
         };
-
+    
+        console.log('Payload to send:', payload); // Log the payload
+    
         try {
             const response = await axiosInstance.post('/api/users/register', payload);
+            console.log('Response:', response); // Log the response
             setMessage('Registration successful!');
             navigate('/login');
         } catch (error) {
-            console.error('Registration error:', error.response ? error.response.data : error);
-            setMessage('Registration failed. Please try again.');
+            console.error('Registration error:', error);
+            if (error.response) {
+                if (error.response.status === 400) {
+                    const validationErrors = error.response.data;
+                    console.log('Validation Errors:', validationErrors); // Log validation errors
+                    if (typeof validationErrors === 'object') {
+                        const errorMessages = Object.entries(validationErrors)
+                            .map(([field, message]) => `${field}: ${message}`).join(', ');
+                        setErrorMessage(`Validation failed: ${errorMessages}`);
+                    } else {
+                        setErrorMessage(validationErrors || 'Registration failed. Please try again.');
+                    }
+                } else {
+                    setErrorMessage('An error occurred. Please try again.');
+                }
+            } else {
+                setErrorMessage('Network error. Please try again later.');
+            }
         }
     };
+    
 
     return (
         <div className="container mt-5">
@@ -128,8 +150,8 @@ const Register = () => {
                 </div>
                 <button type="submit" className="btn btn-primary w-100">Register</button>
             </form>
-            {errorMessage && <p className="text-danger text-center mt-3">{errorMessage}</p>}
-            {message && <p className="text-success text-center mt-3">{message}</p>}
+            {errorMessage && <p className="text-danger text-center mt-3">{errorMessage}</p>} {/* Display error message if any */}
+            {message && <p className="text-success text-center mt-3">{message}</p>} {/* Display success message if any */}
         </div>
     );
 };

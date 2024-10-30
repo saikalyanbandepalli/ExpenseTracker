@@ -1,10 +1,19 @@
-import React from 'react'; 
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => (
-  <div className="container mt-5">
+  <div
+    className="container mt-5"
+    style={{
+      backgroundImage: "url('path-to-your-image.jpg')",
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      minHeight: '100vh',
+      paddingTop: '50px', 
+    }}
+  >
     <h1 className="text-center mb-4">Welcome to the Expense Tracker</h1>
-    
+
     <div className="row justify-content-center mb-4">
       <div className="col-md-6 text-center">
         <p className="mb-3">
@@ -37,13 +46,6 @@ const Dashboard = () => (
         </div>
       </div>
     </div>
-
-    {/* Uncomment to display the Expense List
-    <div className="row mt-4">
-      <div className="col-12">
-        <ExpenseList />
-      </div>
-    </div> */}
   </div>
 );
 

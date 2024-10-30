@@ -54,12 +54,12 @@ public class UserControllerTest {
 
     @Test
     public void testRegisterUser_Success() throws Exception {
-       // User user = new User("testUser", "password", null);
-       // when(userService.registerUser(any(User.class))).thenReturn(user);
+       User user = new User();
+       when(userService.registerUser(any(User.class))).thenReturn(user);
 
         mockMvc.perform(post("/api/users/register")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"username\":\"testUser\",\"password\":\"password\"}"))
+                        .content("{\"username\":\"testUser\",\"password\":\"password\",\"email\":\"test@gmail.com\",\"roles\":[\"admin\"]}"))
                 .andExpect(status().isCreated());
     }
 

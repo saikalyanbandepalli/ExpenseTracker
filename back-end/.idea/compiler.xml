@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="config-server" />
+        <module name="post-service" />
+        <module name="follow-service" />
+        <module name="feed-service" />
+        <module name="api-gateway" />
+        <module name="project" />
+        <module name="user-service" />
+        <module name="eureka-server" />
+        <module name="comment-reaction-service" />
+        <module name="notification-service" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway" options="-parameters" />
+      <module name="comment-reaction-service" options="-parameters" />
+      <module name="config-server" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="feed-service" options="-parameters" />
+      <module name="follow-service" options="-parameters" />
+      <module name="notification-service" options="-parameters" />
+      <module name="post-service" options="-parameters" />
+      <module name="project" options="-parameters" />
+      <module name="user-service" options="-parameters" />
+    </option>
+  </component>
+</project>

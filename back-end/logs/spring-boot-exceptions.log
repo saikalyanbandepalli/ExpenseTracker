@@ -1,0 +1,595 @@
+2024-11-03 11:20:54 - Starting expenseservice using Java 22.0.2 with PID 12936 (C:\Users\Bande\Desktop\social-media-platform-microservice\back-end\services\expense-tracker-service\expense-tracker-service\target\classes started by Bande in C:\Users\Bande\Desktop\social-media-platform-microservice\back-end)
+2024-11-03 11:20:54 - Running with Spring Boot v3.3.4, Spring v6.1.13
+2024-11-03 11:20:54 - No active profile set, falling back to 1 default profile: "default"
+2024-11-03 11:20:54 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-03 11:20:54 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-03 11:20:56 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-03 11:20:56 - Finished Spring Data repository scanning in 200 ms. Found 3 JPA repository interfaces.
+2024-11-03 11:20:56 - BeanFactory id=7f589f60-ced7-3f79-bf6d-890895061b8f
+2024-11-03 11:20:57 - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-11-03 11:20:57 - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-11-03 11:20:57 - Tomcat initialized with port 8087 (http)
+2024-11-03 11:20:57 - Starting service [Tomcat]
+2024-11-03 11:20:57 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-11-03 11:20:57 - Initializing Spring embedded WebApplicationContext
+2024-11-03 11:20:57 - Root WebApplicationContext: initialization completed in 2941 ms
+2024-11-03 11:20:57 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-03 11:20:58 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-03 11:20:58 - HHH000026: Second-level cache disabled
+2024-11-03 11:20:58 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-03 11:20:58 - HikariPool-1 - Starting...
+2024-11-03 11:20:58 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@26e3dd2b
+2024-11-03 11:20:58 - HikariPool-1 - Start completed.
+2024-11-03 11:20:58 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-03 11:20:58 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-11-03 11:21:00 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-03 11:21:00 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-03 11:21:00 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-03 11:21:01 - Filter 'jwtRequestFilter' configured for use
+2024-11-03 11:21:01 - Global AuthenticationManager configured with UserDetailsService bean with name userService
+2024-11-03 11:21:01 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-03 11:21:01 - 16 mappings in 'requestMappingHandlerMapping'
+2024-11-03 11:21:01 - Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-11-03 11:21:01 - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-11-03 11:21:01 - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-11-03 11:21:02 - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-11-03 11:21:02 - LiveReload server is running on port 35729
+2024-11-03 11:21:02 - Eureka HTTP Client uses RestTemplate.
+2024-11-03 11:21:02 - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-11-03 11:21:02 - Setting initial instance status as: STARTING
+2024-11-03 11:21:02 - Initializing Eureka in region us-east-1
+2024-11-03 11:21:02 - Resolving eureka endpoints via configuration
+2024-11-03 11:21:02 - Disable delta property : false
+2024-11-03 11:21:02 - Single vip registry refresh property : null
+2024-11-03 11:21:02 - Force full registry fetch : false
+2024-11-03 11:21:02 - Application is null : false
+2024-11-03 11:21:02 - Registered Applications size is zero : true
+2024-11-03 11:21:02 - Application version is -1: true
+2024-11-03 11:21:02 - Getting all instance registry info from the eureka server
+2024-11-03 11:21:02 - HTTP GET http://localhost:8761/eureka/apps/
+2024-11-03 11:21:02 - Accept=[application/json, application/*+json]
+2024-11-03 11:21:02 - Response 200 OK
+2024-11-03 11:21:02 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:21:02 - The response status is 200
+2024-11-03 11:21:02 - Starting heartbeat executor: renew interval is: 30
+2024-11-03 11:21:02 - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-11-03 11:21:02 - Discovery Client initialized at timestamp 1730613062952 with initial instances count: 4
+2024-11-03 11:21:02 - Registering application PROJECT with eureka with status UP
+2024-11-03 11:21:02 - Saw local status change event StatusChangeEvent [timestamp=1730613062965, current=UP, previous=STARTING]
+2024-11-03 11:21:02 - DiscoveryClient_PROJECT/SAIKALYAN-PC:project:8087: registering service...
+2024-11-03 11:21:02 - HTTP POST http://localhost:8761/eureka/apps/PROJECT
+2024-11-03 11:21:02 - Accept=[application/json, application/*+json]
+2024-11-03 11:21:02 - Tomcat started on port 8087 (http) with context path '/'
+2024-11-03 11:21:02 - Updating port to 8087
+2024-11-03 11:21:02 - Writing [InstanceInfo [instanceId = SAIKALYAN-PC:project:8087, appName = PROJECT, hostName = SAIKALYAN-PC, status = UP, ipAddr = 192.168.0.110, port = 8087, securePort = 443, dataCenterInfo = com.netflix.appinfo.MyDataCenterInfo@309ac73f] as "application/json"
+2024-11-03 11:21:03 - Started expenseservice in 9.285 seconds (process running for 10.233)
+2024-11-03 11:21:03 - Response 204 NO_CONTENT
+2024-11-03 11:21:03 - DiscoveryClient_PROJECT/SAIKALYAN-PC:project:8087 - registration status: 204
+2024-11-03 11:21:32 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:21:32 - Accept=[application/json, application/*+json]
+2024-11-03 11:21:32 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:21:32 - Accept=[application/json, application/*+json]
+2024-11-03 11:21:32 - Response 200 OK
+2024-11-03 11:21:32 - Response 200 OK
+2024-11-03 11:21:32 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:22:02 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:22:02 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:22:02 - Accept=[application/json, application/*+json]
+2024-11-03 11:22:02 - Accept=[application/json, application/*+json]
+2024-11-03 11:22:02 - Response 200 OK
+2024-11-03 11:22:02 - Response 200 OK
+2024-11-03 11:22:02 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:22:33 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:22:33 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:22:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:22:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:22:33 - Response 200 OK
+2024-11-03 11:22:33 - Response 200 OK
+2024-11-03 11:22:33 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:23:03 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:23:03 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:23:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:23:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:23:03 - Response 200 OK
+2024-11-03 11:23:03 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:23:03 - HTTP GET http://localhost:8761/eureka/apps/
+2024-11-03 11:23:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:23:03 - Response 200 OK
+2024-11-03 11:23:03 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:23:03 - Response 200 OK
+2024-11-03 11:23:33 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:23:33 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:23:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:23:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:23:33 - Response 200 OK
+2024-11-03 11:23:33 - Response 200 OK
+2024-11-03 11:23:33 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:24:03 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:24:03 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:24:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:24:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:24:03 - Response 200 OK
+2024-11-03 11:24:03 - Response 200 OK
+2024-11-03 11:24:03 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:24:03 - HTTP GET http://localhost:8761/eureka/apps/
+2024-11-03 11:24:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:24:03 - Response 200 OK
+2024-11-03 11:24:03 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:24:33 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:24:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:24:33 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:24:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:24:33 - Response 200 OK
+2024-11-03 11:24:33 - Response 200 OK
+2024-11-03 11:24:33 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:25:03 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:25:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:25:03 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:25:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:25:03 - Response 200 OK
+2024-11-03 11:25:03 - Response 200 OK
+2024-11-03 11:25:03 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:25:33 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:25:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:25:33 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:25:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:25:33 - Response 200 OK
+2024-11-03 11:25:33 - Response 200 OK
+2024-11-03 11:25:33 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:26:02 - Resolving eureka endpoints via configuration
+2024-11-03 11:26:03 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:26:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:26:03 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:26:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:26:03 - Response 200 OK
+2024-11-03 11:26:03 - Response 200 OK
+2024-11-03 11:26:03 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:26:33 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:26:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:26:33 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:26:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:26:33 - Response 200 OK
+2024-11-03 11:26:33 - Response 200 OK
+2024-11-03 11:26:33 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:27:03 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:27:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:27:03 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:27:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:27:03 - Response 200 OK
+2024-11-03 11:27:03 - Response 200 OK
+2024-11-03 11:27:03 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:27:33 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:27:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:27:33 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:27:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:27:33 - Response 200 OK
+2024-11-03 11:27:33 - Response 200 OK
+2024-11-03 11:27:33 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:28:03 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:28:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:28:03 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:28:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:28:03 - Response 200 OK
+2024-11-03 11:28:03 - Response 200 OK
+2024-11-03 11:28:03 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:28:33 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:28:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:28:33 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:28:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:28:33 - Response 200 OK
+2024-11-03 11:28:33 - Response 200 OK
+2024-11-03 11:28:33 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:29:03 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:29:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:29:03 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:29:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:29:03 - Response 200 OK
+2024-11-03 11:29:03 - Response 200 OK
+2024-11-03 11:29:03 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:29:33 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:29:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:29:33 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:29:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:29:33 - Response 200 OK
+2024-11-03 11:29:33 - Response 200 OK
+2024-11-03 11:29:33 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:30:03 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:30:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:30:03 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:30:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:30:03 - Response 200 OK
+2024-11-03 11:30:03 - Response 200 OK
+2024-11-03 11:30:03 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:30:33 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:30:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:30:33 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:30:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:30:33 - Response 200 OK
+2024-11-03 11:30:33 - Response 200 OK
+2024-11-03 11:30:33 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:31:02 - Resolving eureka endpoints via configuration
+2024-11-03 11:31:03 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:31:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:31:03 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:31:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:31:03 - Response 200 OK
+2024-11-03 11:31:03 - Response 200 OK
+2024-11-03 11:31:03 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:31:33 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:31:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:31:33 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:31:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:31:33 - Response 200 OK
+2024-11-03 11:31:33 - Response 200 OK
+2024-11-03 11:31:33 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:32:03 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:32:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:32:03 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:32:03 - Response 200 OK
+2024-11-03 11:32:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:32:03 - Response 200 OK
+2024-11-03 11:32:03 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:32:33 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:32:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:32:33 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:32:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:32:33 - Response 200 OK
+2024-11-03 11:32:33 - Response 200 OK
+2024-11-03 11:32:33 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:33:03 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:33:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:33:03 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:33:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:33:03 - Response 200 OK
+2024-11-03 11:33:03 - Response 200 OK
+2024-11-03 11:33:03 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:33:33 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:33:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:33:33 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:33:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:33:33 - Response 200 OK
+2024-11-03 11:33:33 - Response 200 OK
+2024-11-03 11:33:33 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:34:03 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:34:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:34:03 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:34:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:34:03 - Response 200 OK
+2024-11-03 11:34:03 - Response 200 OK
+2024-11-03 11:34:03 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:34:33 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:34:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:34:33 - Response 200 OK
+2024-11-03 11:34:33 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:34:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:34:33 - Response 200 OK
+2024-11-03 11:34:33 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:35:03 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:35:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:35:03 - Response 200 OK
+2024-11-03 11:35:03 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:35:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:35:03 - Response 200 OK
+2024-11-03 11:35:03 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:35:33 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:35:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:35:33 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:35:33 - Accept=[application/json, application/*+json]
+2024-11-03 11:35:33 - Response 200 OK
+2024-11-03 11:35:33 - Response 200 OK
+2024-11-03 11:35:33 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:36:02 - Resolving eureka endpoints via configuration
+2024-11-03 11:36:03 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613062964
+2024-11-03 11:36:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:36:03 - Response 200 OK
+2024-11-03 11:36:03 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:36:03 - Accept=[application/json, application/*+json]
+2024-11-03 11:36:03 - Response 200 OK
+2024-11-03 11:36:03 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:36:14 - Unregistering application PROJECT with eureka with status DOWN
+2024-11-03 11:36:14 - Saw local status change event StatusChangeEvent [timestamp=1730613974215, current=DOWN, previous=UP]
+2024-11-03 11:36:14 - DiscoveryClient_PROJECT/SAIKALYAN-PC:project:8087: registering service...
+2024-11-03 11:36:14 - HTTP POST http://localhost:8761/eureka/apps/PROJECT
+2024-11-03 11:36:14 - Accept=[application/json, application/*+json]
+2024-11-03 11:36:14 - Writing [InstanceInfo [instanceId = SAIKALYAN-PC:project:8087, appName = PROJECT, hostName = SAIKALYAN-PC, status = DOWN, ipAddr = 192.168.0.110, port = 8087, securePort = 443, dataCenterInfo = com.netflix.appinfo.MyDataCenterInfo@309ac73f] as "application/json"
+2024-11-03 11:36:14 - Response 204 NO_CONTENT
+2024-11-03 11:36:14 - DiscoveryClient_PROJECT/SAIKALYAN-PC:project:8087 - registration status: 204
+2024-11-03 11:36:14 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-03 11:36:14 - HikariPool-1 - Shutdown initiated...
+2024-11-03 11:36:14 - HikariPool-1 - Shutdown completed.
+2024-11-03 11:36:14 - Shutting down DiscoveryClient ...
+2024-11-03 11:36:17 - Unregistering ...
+2024-11-03 11:36:17 - HTTP DELETE http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087
+2024-11-03 11:36:17 - Accept=[application/json, application/*+json]
+2024-11-03 11:36:17 - Response 200 OK
+2024-11-03 11:36:17 - DiscoveryClient_PROJECT/SAIKALYAN-PC:project:8087 - deregister  status: 200
+2024-11-03 11:36:17 - Completed shut down of DiscoveryClient
+2024-11-03 11:36:21 - Starting expenseservice using Java 22.0.2 with PID 10836 (C:\Users\Bande\Desktop\social-media-platform-microservice\back-end\services\expense-tracker-service\expense-tracker-service\target\classes started by Bande in C:\Users\Bande\Desktop\social-media-platform-microservice\back-end)
+2024-11-03 11:36:21 - Running with Spring Boot v3.3.4, Spring v6.1.13
+2024-11-03 11:36:21 - No active profile set, falling back to 1 default profile: "default"
+2024-11-03 11:36:21 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-03 11:36:21 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-03 11:36:23 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-03 11:36:23 - Finished Spring Data repository scanning in 215 ms. Found 3 JPA repository interfaces.
+2024-11-03 11:36:23 - BeanFactory id=7f589f60-ced7-3f79-bf6d-890895061b8f
+2024-11-03 11:36:24 - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-11-03 11:36:24 - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-11-03 11:36:24 - Tomcat initialized with port 8087 (http)
+2024-11-03 11:36:24 - Starting service [Tomcat]
+2024-11-03 11:36:24 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-11-03 11:36:24 - Initializing Spring embedded WebApplicationContext
+2024-11-03 11:36:24 - Root WebApplicationContext: initialization completed in 3071 ms
+2024-11-03 11:36:25 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-03 11:36:25 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-03 11:36:25 - HHH000026: Second-level cache disabled
+2024-11-03 11:36:25 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-03 11:36:25 - HikariPool-1 - Starting...
+2024-11-03 11:36:26 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4f886606
+2024-11-03 11:36:26 - HikariPool-1 - Start completed.
+2024-11-03 11:36:26 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-03 11:36:26 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-11-03 11:36:27 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-03 11:36:27 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-03 11:36:27 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-03 11:36:28 - Filter 'jwtRequestFilter' configured for use
+2024-11-03 11:36:28 - Global AuthenticationManager configured with UserDetailsService bean with name userService
+2024-11-03 11:36:28 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-03 11:36:28 - 16 mappings in 'requestMappingHandlerMapping'
+2024-11-03 11:36:28 - Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-11-03 11:36:28 - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-11-03 11:36:28 - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-11-03 11:36:28 - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-11-03 11:36:29 - LiveReload server is running on port 35729
+2024-11-03 11:36:29 - Eureka HTTP Client uses RestTemplate.
+2024-11-03 11:36:29 - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-11-03 11:36:29 - Setting initial instance status as: STARTING
+2024-11-03 11:36:29 - Initializing Eureka in region us-east-1
+2024-11-03 11:36:29 - Resolving eureka endpoints via configuration
+2024-11-03 11:36:29 - Disable delta property : false
+2024-11-03 11:36:29 - Single vip registry refresh property : null
+2024-11-03 11:36:29 - Force full registry fetch : false
+2024-11-03 11:36:29 - Application is null : false
+2024-11-03 11:36:29 - Registered Applications size is zero : true
+2024-11-03 11:36:29 - Application version is -1: true
+2024-11-03 11:36:29 - Getting all instance registry info from the eureka server
+2024-11-03 11:36:29 - HTTP GET http://localhost:8761/eureka/apps/
+2024-11-03 11:36:29 - Accept=[application/json, application/*+json]
+2024-11-03 11:36:29 - Response 200 OK
+2024-11-03 11:36:29 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:36:29 - The response status is 200
+2024-11-03 11:36:29 - Starting heartbeat executor: renew interval is: 30
+2024-11-03 11:36:29 - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-11-03 11:36:29 - Discovery Client initialized at timestamp 1730613989846 with initial instances count: 6
+2024-11-03 11:36:29 - Registering application PROJECT with eureka with status UP
+2024-11-03 11:36:29 - Saw local status change event StatusChangeEvent [timestamp=1730613989851, current=UP, previous=STARTING]
+2024-11-03 11:36:29 - DiscoveryClient_PROJECT/SAIKALYAN-PC:project:8087: registering service...
+2024-11-03 11:36:29 - HTTP POST http://localhost:8761/eureka/apps/PROJECT
+2024-11-03 11:36:29 - Accept=[application/json, application/*+json]
+2024-11-03 11:36:29 - Tomcat started on port 8087 (http) with context path '/'
+2024-11-03 11:36:29 - Updating port to 8087
+2024-11-03 11:36:29 - Writing [InstanceInfo [instanceId = SAIKALYAN-PC:project:8087, appName = PROJECT, hostName = SAIKALYAN-PC, status = UP, ipAddr = 192.168.0.110, port = 8087, securePort = 443, dataCenterInfo = com.netflix.appinfo.MyDataCenterInfo@1cf81d2] as "application/json"
+2024-11-03 11:36:29 - Started expenseservice in 9.081 seconds (process running for 9.96)
+2024-11-03 11:36:29 - Response 204 NO_CONTENT
+2024-11-03 11:36:29 - DiscoveryClient_PROJECT/SAIKALYAN-PC:project:8087 - registration status: 204
+2024-11-03 11:36:59 - HTTP GET http://localhost:8761/eureka/apps/delta
+2024-11-03 11:36:59 - Accept=[application/json, application/*+json]
+2024-11-03 11:36:59 - HTTP PUT http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087?status=UP&lastDirtyTimestamp=1730613989851
+2024-11-03 11:36:59 - Response 200 OK
+2024-11-03 11:36:59 - Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2024-11-03 11:36:59 - Accept=[application/json, application/*+json]
+2024-11-03 11:36:59 - Response 200 OK
+2024-11-03 11:37:01 - Unregistering application PROJECT with eureka with status DOWN
+2024-11-03 11:37:01 - Saw local status change event StatusChangeEvent [timestamp=1730614021499, current=DOWN, previous=UP]
+2024-11-03 11:37:01 - DiscoveryClient_PROJECT/SAIKALYAN-PC:project:8087: registering service...
+2024-11-03 11:37:01 - HTTP POST http://localhost:8761/eureka/apps/PROJECT
+2024-11-03 11:37:01 - Accept=[application/json, application/*+json]
+2024-11-03 11:37:01 - Writing [InstanceInfo [instanceId = SAIKALYAN-PC:project:8087, appName = PROJECT, hostName = SAIKALYAN-PC, status = DOWN, ipAddr = 192.168.0.110, port = 8087, securePort = 443, dataCenterInfo = com.netflix.appinfo.MyDataCenterInfo@1cf81d2] as "application/json"
+2024-11-03 11:37:01 - Response 204 NO_CONTENT
+2024-11-03 11:37:01 - DiscoveryClient_PROJECT/SAIKALYAN-PC:project:8087 - registration status: 204
+2024-11-03 11:37:01 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-03 11:37:01 - HikariPool-1 - Shutdown initiated...
+2024-11-03 11:37:01 - HikariPool-1 - Shutdown completed.
+2024-11-03 11:37:01 - Shutting down DiscoveryClient ...
+2024-11-03 11:37:04 - Unregistering ...
+2024-11-03 11:37:04 - HTTP DELETE http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087
+2024-11-03 11:37:04 - Accept=[application/json, application/*+json]
+2024-11-03 11:37:04 - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/} exception=I/O error on DELETE request for "http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on DELETE request for "http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:915)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:895)
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:790)
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:672)
+	at org.springframework.cloud.netflix.eureka.http.RestTemplateEurekaHttpClient.cancel(RestTemplateEurekaHttpClient.java:87)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:91)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:919)
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:900)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:457)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeDestroyMethods(InitDestroyAnnotationBeanPostProcessor.java:415)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeDestruction(InitDestroyAnnotationBeanPostProcessor.java:239)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:202)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.run(DisposableBeanAdapter.java:195)
+	at org.springframework.cloud.context.scope.GenericScope$BeanLifecycleWrapper.destroy(GenericScope.java:389)
+	at org.springframework.cloud.context.scope.GenericScope.destroy(GenericScope.java:136)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:211)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:587)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:559)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1202)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:520)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1195)
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1195)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1156)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1102)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:145)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:752)
+	at org.apache.hc.client5.http.socket.PlainConnectionSocketFactory.lambda$connectSocket$0(PlainConnectionSocketFactory.java:91)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571)
+	at org.apache.hc.client5.http.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:90)
+	at org.apache.hc.client5.http.socket.ConnectionSocketFactory.connectSocket(ConnectionSocketFactory.java:123)
+	at org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:189)
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:450)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:162)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:172)
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:142)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:113)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:152)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:116)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:170)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.apache.hc.client5.http.classic.HttpClient.executeOpen(HttpClient.java:183)
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:99)
+	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:70)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66)
+	at org.springframework.http.client.InterceptingClientHttpRequest$InterceptingRequestExecution.execute(InterceptingClientHttpRequest.java:112)
+	at org.springframework.cloud.netflix.eureka.http.RestTemplateTransportClientFactory.lambda$restTemplate$3(RestTemplateTransportClientFactory.java:170)
+	at org.springframework.http.client.InterceptingClientHttpRequest$InterceptingRequestExecution.execute(InterceptingClientHttpRequest.java:88)
+	at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:72)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:889)
+	... 37 more
+
+2024-11-03 11:37:04 - Request execution failed with message: I/O error on DELETE request for "http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+2024-11-03 11:37:04 - HTTP DELETE http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087
+2024-11-03 11:37:04 - Accept=[application/json, application/*+json]
+2024-11-03 11:37:04 - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}, exception=I/O error on DELETE request for "http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on DELETE request for "http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:915)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:895)
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:790)
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:672)
+	at org.springframework.cloud.netflix.eureka.http.RestTemplateEurekaHttpClient.cancel(RestTemplateEurekaHttpClient.java:87)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:121)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:80)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:919)
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:900)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:457)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeDestroyMethods(InitDestroyAnnotationBeanPostProcessor.java:415)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeDestruction(InitDestroyAnnotationBeanPostProcessor.java:239)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:202)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.run(DisposableBeanAdapter.java:195)
+	at org.springframework.cloud.context.scope.GenericScope$BeanLifecycleWrapper.destroy(GenericScope.java:389)
+	at org.springframework.cloud.context.scope.GenericScope.destroy(GenericScope.java:136)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:211)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:587)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:559)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1202)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:520)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1195)
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1195)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1156)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1102)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:145)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:752)
+	at org.apache.hc.client5.http.socket.PlainConnectionSocketFactory.lambda$connectSocket$0(PlainConnectionSocketFactory.java:91)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571)
+	at org.apache.hc.client5.http.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:90)
+	at org.apache.hc.client5.http.socket.ConnectionSocketFactory.connectSocket(ConnectionSocketFactory.java:123)
+	at org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:189)
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:450)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:162)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:172)
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:142)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:113)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:152)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:116)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:170)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.apache.hc.client5.http.classic.HttpClient.executeOpen(HttpClient.java:183)
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:99)
+	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:70)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66)
+	at org.springframework.http.client.InterceptingClientHttpRequest$InterceptingRequestExecution.execute(InterceptingClientHttpRequest.java:112)
+	at org.springframework.cloud.netflix.eureka.http.RestTemplateTransportClientFactory.lambda$restTemplate$3(RestTemplateTransportClientFactory.java:170)
+	at org.springframework.http.client.InterceptingClientHttpRequest$InterceptingRequestExecution.execute(InterceptingClientHttpRequest.java:88)
+	at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:72)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:889)
+	... 38 more
+
+2024-11-03 11:37:04 - Request execution failed with message: I/O error on DELETE request for "http://localhost:8761/eureka/apps/PROJECT/SAIKALYAN-PC:project:8087": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+2024-11-03 11:37:04 - DiscoveryClient_PROJECT/SAIKALYAN-PC:project:8087 - de-registration failedCannot execute request on any known server
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:919)
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:900)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:457)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeDestroyMethods(InitDestroyAnnotationBeanPostProcessor.java:415)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeDestruction(InitDestroyAnnotationBeanPostProcessor.java:239)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:202)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.run(DisposableBeanAdapter.java:195)
+	at org.springframework.cloud.context.scope.GenericScope$BeanLifecycleWrapper.destroy(GenericScope.java:389)
+	at org.springframework.cloud.context.scope.GenericScope.destroy(GenericScope.java:136)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:211)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:587)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:559)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1202)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:520)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1195)
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1195)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1156)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1102)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:145)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+2024-11-03 11:37:04 - Completed shut down of DiscoveryClient

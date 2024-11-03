@@ -14,6 +14,14 @@
         <option value="$PROJECT_DIR$/notification-service/notification-service/pom.xml" />
         <option value="$PROJECT_DIR$/comment-reaction-service/comment-reaction-service/pom.xml" />
         <option value="$PROJECT_DIR$/expense_tracker_service_backend/pom.xml" />
+        <option value="$PROJECT_DIR$/services/user-service/user-service/pom.xml" />
+        <option value="$PROJECT_DIR$/services/post-service/post-service/pom.xml" />
+        <option value="$PROJECT_DIR$/services/notification-service/notification-service/pom.xml" />
+        <option value="$PROJECT_DIR$/services/follow-service/follow-service/pom.xml" />
+        <option value="$PROJECT_DIR$/services/feed-service/feed-service/pom.xml" />
+        <option value="$PROJECT_DIR$/services/expense-tracker-service/pom.xml" />
+        <option value="$PROJECT_DIR$/services/comment-reaction-service/comment-reaction-service/pom.xml" />
+        <option value="$PROJECT_DIR$/services/expense-tracker-service/expense-tracker-service/pom.xml" />
       </list>
     </option>
   </component>

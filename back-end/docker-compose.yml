@@ -1,0 +1,57 @@
+version: '3'
+services:
+  api-gateway:
+    image: api-gateway:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - eureka-server
+    networks:
+      - microservice-network
+
+  eureka-server:
+    image: eureka-server:latest
+    ports:
+      - "8761:8761"
+    networks:
+      - microservice-network
+
+  comment-reaction-service:
+    build: ./services/comment-reaction-service
+    ports:
+      - "8083:8083"
+    depends_on:
+      - eureka-server
+    networks:
+      - microservice-network
+
+  notification-service:
+    build: ./services/notification-service
+    ports:
+      - "8084:8084"
+    depends_on:
+      - eureka-server
+    networks:
+      - microservice-network
+
+  follow-service:
+    build: ./services/follow-service
+    ports:
+      - "8085:8085"
+    depends_on:
+      - eureka-server
+    networks:
+      - microservice-network
+
+  feed-service:
+    build: ./services/feed-service
+    ports:
+      - "8086:8086"
+    depends_on:
+      - eureka-server
+    networks:
+      - microservice-network
+
+networks:
+  microservice-network:
+    driver: bridge

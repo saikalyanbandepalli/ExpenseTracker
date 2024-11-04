@@ -7,6 +7,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @Entity
 public class User {
@@ -39,6 +41,7 @@ public class User {
     private Long id;
     private String username;
     private String password;
+    private List<Role> roles;
 
     public String getEmail() {
         return email;

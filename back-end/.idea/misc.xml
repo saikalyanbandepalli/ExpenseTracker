@@ -22,6 +22,8 @@
         <option value="$PROJECT_DIR$/services/expense-tracker-service/pom.xml" />
         <option value="$PROJECT_DIR$/services/comment-reaction-service/comment-reaction-service/pom.xml" />
         <option value="$PROJECT_DIR$/services/expense-tracker-service/expense-tracker-service/pom.xml" />
+        <option value="$PROJECT_DIR$/services/jwt-service/pom.xml" />
+        <option value="$PROJECT_DIR$/services/jwt-service/jwt-service/pom.xml" />
       </list>
     </option>
   </component>

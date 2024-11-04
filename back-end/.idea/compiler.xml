@@ -6,18 +6,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="config-server" />
         <module name="post-service" />
         <module name="follow-service" />
         <module name="feed-service" />
+        <module name="jwt" />
         <module name="api-gateway" />
-        <module name="project" />
         <module name="user-service" />
         <module name="eureka-server" />
         <module name="comment-reaction-service" />
         <module name="notification-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="config-server" target="21" />
+      <module name="project" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -27,6 +30,7 @@
       <module name="eureka-server" options="-parameters" />
       <module name="feed-service" options="-parameters" />
       <module name="follow-service" options="-parameters" />
+      <module name="jwt" options="-parameters" />
       <module name="notification-service" options="-parameters" />
       <module name="post-service" options="-parameters" />
       <module name="project" options="-parameters" />

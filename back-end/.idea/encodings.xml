@@ -15,6 +15,8 @@
     <file url="file://$PROJECT_DIR$/services/expense-tracker-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/feed-service/feed-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/follow-service/follow-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/jwt-service/jwt-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/jwt-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/notification-service/notification-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/post-service/post-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/user-service/user-service/src/main/java" charset="UTF-8" />

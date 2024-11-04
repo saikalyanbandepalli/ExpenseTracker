@@ -7,7 +7,7 @@ spring:
   application:
     name: api-gateway
   datasource:
-    url: jdbc:mysql://localhost:3306/facebook
+    url: jdbc:mysql://localhost:3306/apigateway
     username: root
     password: Kalyan@123
   jpa:
@@ -43,11 +43,7 @@ cloud:
         uri: lb://feed-service
         predicates:
           - Path=/api/feed/**
-      - id: expense-tracker-service
-        uri: lb://expense-tracker-service
-        predicates:
-          - Path=/api/expenses/**
-
+      
 
 
 

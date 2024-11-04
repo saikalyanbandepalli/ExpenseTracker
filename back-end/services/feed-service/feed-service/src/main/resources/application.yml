@@ -5,7 +5,7 @@ spring:
   application:
     name: feed-service
   datasource:
-    url: jdbc:mysql://localhost:3306/facebook
+    url: jdbc:mysql://localhost:3306/feedservice
     username: root
     password: Kalyan@123
   jpa:

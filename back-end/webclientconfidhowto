@@ -1,0 +1,60 @@
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.http.HttpStatus;
+import reactor.core.publisher.Mono;
+
+@Service
+public class WebClientService {
+
+    private final WebClient.Builder webClientBuilder;
+
+    @Autowired
+    public WebClientService(WebClient.Builder webClientBuilder) {
+        this.webClientBuilder = webClientBuilder;
+    }
+
+    // Method for GET request
+    public String getData(String endpoint) {
+        // Create WebClient instance
+        WebClient webClient = webClientBuilder.baseUrl("http://example.com/api")  // Your base URL
+                .build();
+
+        // Make GET request to the endpoint
+        return webClient.get()
+                .uri(endpoint)  // Add endpoint to the base URL
+                .retrieve()  // Initiates the request
+                .onStatus(HttpStatus::is4xxClientError, clientResponse -> {
+                    System.out.println("Client Error: " + clientResponse.statusCode());
+                    return Mono.empty();
+                })
+                .onStatus(HttpStatus::is5xxServerError, serverResponse -> {
+                    System.out.println("Server Error: " + serverResponse.statusCode());
+                    return Mono.empty();
+                })
+                .bodyToMono(String.class)  // Convert response body to String
+                .block();  // Block to wait for the result synchronously
+    }
+
+    // Method for DELETE request
+    public String deleteData(String endpoint) {
+        // Create WebClient instance
+        WebClient webClient = webClientBuilder.baseUrl("http://example.com/api")  // Your base URL
+                .build();
+
+        // Make DELETE request to the endpoint
+        return webClient.delete()
+                .uri(endpoint)  // Specify the resource to delete
+                .retrieve()  // Initiates the request
+                .onStatus(HttpStatus::is4xxClientError, clientResponse -> {
+                    System.out.println("Client Error: " + clientResponse.statusCode());
+                    return Mono.empty();
+                })
+                .onStatus(HttpStatus::is5xxServerError, serverResponse -> {
+                    System.out.println("Server Error: " + serverResponse.statusCode());
+                    return Mono.empty();
+                })
+                .bodyToMono(String.class)  // Convert response body to String
+                .block();  // Block to wait for the result synchronously
+    }
+}

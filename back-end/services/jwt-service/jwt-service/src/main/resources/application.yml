@@ -1,17 +1,14 @@
 server:
-  port: 8081
+  port: 8089
+
+jwt:
+  secret: mySecretKey
+  expiration: 3600000
 
 spring:
   application:
-    name: user-service
-  datasource:
-    url: jdbc:mysql://localhost:3306/userservice
-    username: root
-    password: Kalyan@123
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+    name: jwt-service  # Name of the JWT service
+
   cloud:
     discovery:
       enabled: true
@@ -23,10 +20,11 @@ eureka:
 
 logging:
   level:
+    com:
+      netflix:
+        discovery: DEBUG
     org:
       springframework:
-        security: DEBUG
-        web: DEBUG
         cloud:
           netflix:
             eureka: DEBUG

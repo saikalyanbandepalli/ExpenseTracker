@@ -1,5 +1,6 @@
 package com.micro.jwt.config;
 
+import com.micro.jwt.Jwt.JwtRequestFilter;
 import com.micro.jwt.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,15 +10,18 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
 
     private final CustomUserDetailsService customUserDetailsService;
+    private final JwtRequestFilter jwtRequestFilter;  // Inject JwtRequestFilter
 
-    public SecurityConfig(CustomUserDetailsService customUserDetailsService) {
+    public SecurityConfig(CustomUserDetailsService customUserDetailsService, JwtRequestFilter jwtRequestFilter) {
         this.customUserDetailsService = customUserDetailsService;
+        this.jwtRequestFilter = jwtRequestFilter;
     }
 
     @Bean
@@ -33,11 +37,12 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/login").permitAll() // Allow public access to login
-                        .requestMatchers("/admin/**").hasRole("ADMIN") // Allow access to admin endpoints
-                        .requestMatchers("/user/**").hasRole("USER") // Allow access to user endpoints
-                        .anyRequest().authenticated() // Any other request requires authentication
-                );
+                        .requestMatchers("/api/auth/login", "/api/auth/register","/error").permitAll()  // Allow login and register
+                        .requestMatchers("/admin/**").hasRole("ADMIN")   // Require ADMIN role for admin paths
+                        .requestMatchers("/user/**").hasRole("USER")     // Require USER role for user paths
+                        .anyRequest().authenticated()                   // Other requests require authentication
+                )
+                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);  // Add JwtRequestFilter before UsernamePasswordAuthenticationFilter
 
         return http.build();
     }

@@ -1,17 +1,32 @@
 package com.microservice.user_service.model;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import org.springframework.stereotype.Component;
-
+import jakarta.persistence.*;
 import java.util.List;
 
-@Component
 @Entity
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String username;
+    private String password;
+
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<Role> roles;
+
+
+
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -36,13 +51,6 @@ public class User {
         this.password = password;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String username;
-    private String password;
-    private List<Role> roles;
-
     public String getEmail() {
         return email;
     }
@@ -51,7 +59,20 @@ public class User {
         this.email = email;
     }
 
-    private String email;
+    public List<Role> getRoles() {
+        return roles;
+    }
 
-    // Getters and Setters
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

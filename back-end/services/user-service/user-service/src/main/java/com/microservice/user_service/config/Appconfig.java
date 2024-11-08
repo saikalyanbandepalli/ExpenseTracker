@@ -1,4 +1,4 @@
-package com.micro.jwt.config;
+package com.microservice.user_service.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
@@ -6,7 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-public class AppConfig {
+public class Appconfig {
+
     @LoadBalanced
     @Bean
     public RestTemplate restTemplate() {

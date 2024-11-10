@@ -2,6 +2,11 @@ server:
   port: 8088
 
 spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: bandepallis@gmail.com
+    password: Saibaba@1999
   application:
     name: comment-reaction-service
   datasource:
@@ -12,3 +17,8 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: saikalyan
+    password: saikalyan

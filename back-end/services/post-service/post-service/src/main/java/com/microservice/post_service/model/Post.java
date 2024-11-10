@@ -1,12 +1,5 @@
 package com.microservice.post_service.model;
 
-//package com.example.postservice.model;
-
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-//import javax.persistence.Id;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +7,17 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Post {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String title;
+    private String content;
+    private Long userId; // To link each post with a user by userId
+
+    // Getters and Setters
+
     public Long getId() {
         return id;
     }
@@ -38,12 +42,11 @@ public class Post {
         this.content = content;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String title;
-    private String content;
+    public Long getUserId() {
+        return userId;
+    }
 
-    // Getters and Setters
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 }
-

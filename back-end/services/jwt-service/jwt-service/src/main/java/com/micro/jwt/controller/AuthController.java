@@ -29,19 +29,24 @@ public class AuthController {
         String username = authRequest.getUsername();
         String password = authRequest.getPassword();
 
-//        // Verify credentials via UserService
-//        Boolean isAuthenticated = restTemplate.postForObject(
-//                USER_SERVICE_URL + "/authenticate",
-//                new UsernamePasswordAuthenticationToken(username, password),
-//                Boolean.class
-//        );
-//
+        // Verify credentials via UserService
+        // Assuming you have a username variable
+        //String username = "exampleUsername";
+
+        Long userId = restTemplate.postForObject(
+                USER_SERVICE_URL + "/getuserid/{username}",
+                null,  // No request body needed if the endpoint only requires a path variable
+                Long.class,
+                username // Path variable
+        );
+
+
 //        if (!Boolean.TRUE.equals(isAuthenticated)) {
 //            throw new Exception("Invalid username or password");
 //        }
 
         // Generate and return the JWT if authentication succeeds
-        return jwtUtil.generateToken(username);
+        return jwtUtil.generateToken(userId,username);
     }
 
     @GetMapping("/validate")

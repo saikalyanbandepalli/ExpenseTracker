@@ -9,11 +9,8 @@ import java.util.function.Function;
 @Service
 public class JwtUtil {
 
-    @Value("${jwt.secret}")
-    private String secret;
-
-    @Value("${jwt.expiration}")
-    private long expiration;
+    private final String secret = "your-secret-key";
+    private final long expiration = 3600000; // 1 hour in milliseconds
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -41,12 +38,13 @@ public class JwtUtil {
         return extractClaim(token, Claims::getExpiration);
     }
 
-    public String generateToken(String username) {
+    public String generateToken(Long userId, String username) {
         return Jwts.builder()
-                .setSubject(username)
+                .setSubject(username)  // Username as the subject
+                .claim("userId", userId)  // userId as a custom claim
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
-                .signWith(SignatureAlgorithm.HS256, secret)
+                .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
 }

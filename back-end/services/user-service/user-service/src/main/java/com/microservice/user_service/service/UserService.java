@@ -145,5 +145,8 @@ public class UserService {
     }
 
 
+    public Long getIdByUsername(String username) {
+        return userRepository.getIdByUsername(username);
+    }
 }
 

@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import FollowButton from "./FollowButton";
+import FollowersList from "./FollowersList";
 
-function App() {
+const App = () => {
+  const [userId, setUserId] = useState(1); // Default userId, you can change this dynamically
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Follow User Example</h1>
+
+      {/* Example of following functionality */}
+      <FollowButton followerId={userId} followeeId={2} /> {/* Follow user with ID 2 */}
+
+      {/* List followers of a user */}
+      <FollowersList userId={userId} />
     </div>
   );
-}
+};
 
 export default App;

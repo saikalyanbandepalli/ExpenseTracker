@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import PostList from './components/PostList';
+import CreatePost from './components/CreatePost';
+import PostDetail from './components/PostDetail';
 
-function App() {
+const App = () => {
+  const [token, setToken] = useState(localStorage.getItem('jwtToken') || ''); // Save token in localStorage after login
+  const [selectedPostId, setSelectedPostId] = useState(null);
+  const [newPost, setNewPost] = useState(null);
+
+  const handlePostCreated = (post) => {
+    setNewPost(post);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Post Management</h1>
+      {token ? (
+        <>
+          <CreatePost token={token} onPostCreated={handlePostCreated} />
+          {newPost && <PostList token={token} />}
+          {selectedPostId && (
+            <PostDetail token={token} postId={selectedPostId} />
+          )}
+        </>
+      ) : (
+        <p>Please log in to see the posts.</p>
+      )}
     </div>
   );
-}
+};
 
 export default App;

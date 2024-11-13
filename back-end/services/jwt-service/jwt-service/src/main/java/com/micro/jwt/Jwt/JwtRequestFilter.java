@@ -26,7 +26,11 @@ public class JwtRequestFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         // Allow login and register requests without JWT validation
-        if (request.getRequestURI().equals("/api/auth/login") || request.getRequestURI().equals("/api/auth/register")) {
+        if (request.getRequestURI().equals("/api/auth/login") ||
+                request.getRequestURI().equals("/api/auth/register") ||
+                request.getRequestURI().equals("/api/roles/getroles") ||
+                request.getRequestURI().equals("/error") ||
+                request.getRequestURI().equals("/api/auth/generate-token")) {
             filterChain.doFilter(request, response);
             return;
         }

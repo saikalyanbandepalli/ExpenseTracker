@@ -21,7 +21,9 @@ public class JwtTokenProvider {
 
     public Long getUserIdFromJWT(String token) {
         Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
-        return Long.parseLong(claims.get("userId", String.class));  // Extract userId from the claim
+        // Retrieve userId as Integer and convert to Long
+        Integer userId = claims.get("userId", Integer.class);
+        return userId != null ? userId.longValue() : null;
     }
 }
 

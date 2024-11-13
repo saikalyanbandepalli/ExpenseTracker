@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: user-service
+    name: USER-SERVICE
   datasource:
     url: jdbc:mysql://localhost:3306/userservice
     username: root
@@ -15,18 +15,28 @@ spring:
   cloud:
     discovery:
       enabled: true
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  # Exposes all actuator endpoints (health, info, etc.)
+  endpoint:
+    health:
+      show-details: always  # Shows detailed health information
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+  eureka:
+    instance:
+      prefer-ip-address: true
 
-logging:
-  level:
-    org:
-      springframework:
-        security: DEBUG
-        web: DEBUG
-        cloud:
-          netflix:
-            eureka: DEBUG
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        security: DEBUG
+#        web: DEBUG
+#        cloud:
+#          netflix:
+#            eureka: DEBUG

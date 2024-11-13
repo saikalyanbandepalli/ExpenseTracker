@@ -1,4 +1,4 @@
-package com.micro.jwt.config;
+package com.microservice.comment_reaction_service.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,9 +11,9 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // Allows all paths
-                .allowedOrigins("http://localhost:3000") // Allows all origins
+                .allowedOrigins("*") // Allows all origins
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Specify HTTP methods as needed
                 .allowedHeaders("*") // Allows all headers
-                .allowCredentials(true); // Allows cookies, if needed
+                .allowCredentials(false); // Allows cookies, if needed
     }
 }

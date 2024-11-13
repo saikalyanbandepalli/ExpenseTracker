@@ -22,7 +22,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -41,49 +43,38 @@ public class UserService {
 //    @Autowired
 //    private PasswordEncoder passwordEncoder;
 //    //private PasswordEncoder     passwordEncoder;
-    @Autowired
-    private EurekaClient eurekaClient;
 
-    public String authenticateUser(LoginDTO loginDTO) {
-        // Check if user exists
+
+    // UserService code
+    public ResponseEntity<String> authenticateUserAndGetToken(LoginDTO loginDTO) {
         User existingUser = userRepository.findByUsername(loginDTO.getUsername());
-
-        if (existingUser == null) {
-            System.out.println("User not found");
-            return null;
+        if (existingUser == null || !existingUser.getPassword().equals(loginDTO.getPassword())) {
+            return new ResponseEntity<>("Invalid credentials", HttpStatus.UNAUTHORIZED);
         }
 
-        // Use Eureka client to get JWT service URL
-        InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka("jwt-service", false);
-        if (instanceInfo == null) {
-            System.out.println("JWT service not found in Eureka");
-            return null;
-        }
+        // If credentials are valid, make a call to JWT service to generate a token
+        String jwtServiceUrl = "http://localhost:8089/api/auth/generate-token";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
 
-        String jwtServiceUrl = instanceInfo.getHomePageUrl() + "api/auth/login";
-        System.out.println("JWT Service URL: " + jwtServiceUrl);
+        // Create request with user ID and username
+        Map<String, Object> payload = new HashMap<>();
+        payload.put("userId", existingUser.getId());
+        payload.put("username", existingUser.getUsername());
 
-        // Create LoginDTO request payload
-        LoginDTO loginRequest = new LoginDTO(loginDTO.getUsername(), loginDTO.getPassword());
+        HttpEntity<Map<String, Object>> requestEntity = new HttpEntity<>(payload, headers);
+        RestTemplate restTemplate = new RestTemplate();
 
         try {
-            RestTemplate restTemplate = new RestTemplate(); // Ideally, this should be a bean
-
-            // Using postForObject to send request without HttpEntity
-            String jwtToken = restTemplate.postForObject(jwtServiceUrl, loginRequest, String.class);
-
-            if (jwtToken != null) {
-                System.out.println("Received JWT token: " + jwtToken);
-                return jwtToken;  // Return the JWT token
-            } else {
-                System.out.println("JWT service did not return a token.");
+            ResponseEntity<String> response = restTemplate.postForEntity(jwtServiceUrl, requestEntity, String.class);
+            if (response.getStatusCode() == HttpStatus.OK && response.getBody() != null) {
+                return new ResponseEntity<>(response.getBody(), HttpStatus.OK);
             }
-        } catch (HttpClientErrorException | HttpServerErrorException | ResourceAccessException e) {
-            System.out.println("Error during authentication with JWT service: " + e.getMessage());
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Error calling JWT service: " + e.getMessage());
         }
 
-        return null;  // Return null if authentication fails or there’s an issue
+        return new ResponseEntity<>("Failed to generate token", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 

@@ -1,4 +1,4 @@
-package com.micro.jwt.config;
+package com.microservice.feed_service.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,10 +10,11 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") // Allows all paths
-                .allowedOrigins("http://localhost:3000") // Allows all origins
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Specify HTTP methods as needed
-                .allowedHeaders("*") // Allows all headers
-                .allowCredentials(true); // Allows cookies, if needed
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:3001")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .allowCredentials(true);
     }
 }
+

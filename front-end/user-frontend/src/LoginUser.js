@@ -4,17 +4,25 @@ import axios from 'axios';
 const LoginUser = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [token, setToken] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/users/login', { username, password });
-      setToken(response.data);
+      // Send a POST request to the login endpoint with username and password
+      const response = await axios.post('http://localhost:8081/api/users/login', { username, password }, {
+        withCredentials: true,  // Ensures cookies (authToken) are sent and received
+      });
+
+      // Handle successful login
+      console.log('Login successful', response.data);
+
+      // Clear any previous error messages
       setError('');
     } catch (error) {
+      // Handle error cases, such as incorrect login credentials
       setError('Invalid username or password');
+      console.error('Login failed:', error.response ? error.response.data : error.message);
     }
   };
 
@@ -24,15 +32,24 @@ const LoginUser = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Username: </label>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
         </div>
         <div>
           <label>Password: </label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
         </div>
         <button type="submit">Login</button>
       </form>
-      {token && <p>Logged in successfully! Token: {token}</p>}
       {error && <p>{error}</p>}
     </div>
   );
